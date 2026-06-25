@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engenharia de Produção – Mackenzie</title>
+<style>
+  :root {
+    --red: #CC0000;
+    --red-dark: #990000;
+    --red-light: #FF1A1A;
+    --white: #FFFFFF;
+    --off-white: #F8F8F8;
+    --gray-100: #F2F2F2;
+    --gray-200: #E5E5E5;
+    --gray-400: #AAAAAA;
+    --gray-600: #666666;
+    --gray-800: #222222;
+    --accent: #FFD700;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--off-white);
+    color: var(--gray-800);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--red);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 28px;
+    border-bottom: 2px solid rgba(255,255,255,0.15);
+  }
+
+  .logo-m {
+    width: 38px;
+    height: 38px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .header-text h1 {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .header-text p {
+    font-size: 12px;
+    opacity: 0.82;
+    font-weight: 400;
+  }
+
+  /* NAV TABS */
+  nav {
+    background: var(--red-dark);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    min-width: max-content;
+    padding: 0 12px;
+  }
+
+  .nav-list li button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.78);
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 11px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.18s;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-list li button:hover {
+    color: white;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .nav-list li button.active {
+    color: white;
+    border-bottom-color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+
+  /* PANELS */
+  .panel { display: none !important; }
+  .panel.active { display: block !important; }
+
+  /* PAGE TITLE */
+  .page-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--red);
+  }
+
+  .page-title .icon {
+    width: 40px;
+    height: 40px;
+    background: var(--red);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .page-title h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--red-dark);
+  }
+
+  .page-title p {
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-top: 2px;
+  }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--gray-200);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--red-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .card p, .card li {
+    font-size: 13.5px;
+    color: var(--gray-800);
+    line-height: 1.65;
+  }
+
+  .card ul { padding-left: 20px; }
+  .card ul li { margin-bottom: 5px; }
+
+  /* ALERT / INFO BOX */
+  .alert {
+    background: #FFF8E1;
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #5a4000;
+  }
+
+  .alert-red {
+    background: #FFF0F0;
+    border-left-color: var(--red);
+    color: #7a0000;
+  }
+
+  .alert-green {
+    background: #F0FFF4;
+    border-left-color: #2E7D32;
+    color: #1a4a1e;
+  }
+
+  /* STAT BADGES */
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .stat-badge {
+    background: white;
+    border: 2px solid var(--red);
+    border-radius: 10px;
+    padding: 12px 18px;
+    text-align: center;
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .stat-badge .num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--red);
+    display: block;
+  }
+
+  .stat-badge .label {
+    font-size: 11.5px;
+    color: var(--gray-600);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--gray-200);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: white;
+  }
+
+  th {
+    background: var(--red);
+    color: white;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--gray-100); }
+  tr:nth-child(even) td { background: var(--off-white); }
+  tr:nth-child(even):hover td { background: var(--gray-100); }
+
+  /* ETAPA BADGE */
+  .etapa-badge {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .etapa-header {
+    background: var(--red-dark) !important;
+    font-size: 13px !important;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--gray-200);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 18px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--red);
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--red);
+  }
+
+  .timeline-item .date {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-item .desc {
+    font-size: 13.5px;
+    color: var(--gray-800);
+    margin-top: 2px;
+  }
+
+  /* CALENDAR */
+  .calendar-section { margin-bottom: 24px; }
+  .calendar-section h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--red-dark);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+
+  .cal-item {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .cal-item .cal-date {
+    background: var(--red);
+    color: white;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-align: center;
+    min-width: 55px;
+  }
+
+  .cal-item .cal-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--gray-800);
+    line-height: 1.4;
+  }
+
+  .cal-item .cal-sub {
+    font-size: 11px;
+    color: var(--gray-600);
+    margin-top: 2px;
+  }
+
+  /* STEPS */
+  .steps { counter-reset: step; }
+  .step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    counter-increment: step;
+    width: 26px;
+    height: 26px;
+    background: var(--red);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .step-body { flex: 1; }
+  .step-body strong { font-size: 13.5px; color: var(--gray-800); }
+  .step-body p { font-size: 13px; color: var(--gray-600); margin-top: 3px; line-height: 1.5; }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    color: var(--gray-600);
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .tag-red {
+    background: #FFF0F0;
+    border-color: #FFCCCC;
+    color: var(--red-dark);
+  }
+
+  .tag-green {
+    background: #F0FFF4;
+    border-color: #C8E6C9;
+    color: #2E7D32;
+  }
+
+  /* EIXO COLORS */
+  .eixo-univ { background: #E3F2FD; color: #1565C0; border: 1px solid #BBDEFB; }
+  .eixo-comum { background: #F3E5F5; color: #6A1B9A; border: 1px solid #E1BEE7; }
+  .eixo-espec { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
+  .eixo-pi { background: #FFF8E1; color: #F57F17; border: 1px solid #FFE082; }
+  .eixo-tcc { background: #FCE4EC; color: #AD1457; border: 1px solid #F8BBD9; }
+  .eixo-prof { background: #E8EAF6; color: #283593; border: 1px solid #C5CAE9; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo-m">M</div>
+    <div class="header-text">
+      <h1>Engenharia de Produção – UPM</h1>
+      <p>Universidade Presbiteriana Mackenzie · Campus Higienópolis</p>
+    </div>
+  </div>
+  <nav>
+    <ul class="nav-list">
+      <li><button class="active" onclick="showTab('requisitos', this)">🎓 Requisitos</button></li>
+      <li><button onclick="showTab('matriz', this)">📚 Matriz Curricular</button></li>
+      <li><button onclick="showTab('estagio', this)">💼 Estágio</button></li>
+      <li><button onclick="showTab('ativ-comp', this)">⭐ Ativ. Complementar</button></li>
+      <li><button onclick="showTab('abono', this)">📋 Abono de Falta</button></li>
+      <li><button onclick="showTab('ref', this)">🏠 Regime Especial</button></li>
+      <li><button onclick="showTab('aproveitamento', this)">🔄 Aproveitamento</button></li>
+      <li><button onclick="showTab('pi', this)">🔬 Proj. Integrador</button></li>
+      <li><button onclick="showTab('tcc', this)">📝 TCC</button></li>
+      <li><button onclick="showTab('internacionalizacao', this)">🌎 Internacionalização</button></li>
+      <li><button onclick="showTab('calendario', this)">📅 Calendário</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===================== REQUISITOS ===================== -->
+  <div id="tab-requisitos" class="panel active">
+    <div class="page-title">
+      <div class="icon">🎓</div>
+      <div>
+        <h2>Requisitos para Formatura</h2>
+        <p>O que você precisa concluir para se formar em Engenharia de Produção</p>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-badge">
+        <span class="num">10</span>
+        <span class="label">Etapas (semestres)</span>
+      </div>
+      <div class="stat-badge">
+        <span class="num">480h</span>
+        <span class="label">Atividades Complementares</span>
+      </div>
+      <div class="stat-badge">
+        <span class="num">240h</span>
+        <span class="label">Estágio Supervisionado</span>
+      </div>
+      <div class="stat-badge">
+        <span class="num">108h</span>
+        <span class="label">TCC (I e II)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📌 Condições gerais para colação de grau</h3>
+      <ul>
+        <li>Integralizar todas as componentes curriculares obrigatórias das <strong>10 etapas</strong> da Matriz Curricular 2021.</li>
+        <li>Completar <strong>240 horas de Estágio Supervisionado</strong> aprovadas pelo professor orientador.</li>
+        <li>Completar <strong>480 horas de Atividades Complementares</strong> aprovadas pela coordenação.</li>
+        <li>Concluir e ser aprovado em <strong>TCC I e TCC II</strong> (108 horas no total).</li>
+        <li>Realizar o mínimo de <strong>4 Projetos Integradores</strong> ao longo do curso.</li>
+        <li>Ter <strong>frequência mínima de 75%</strong> em cada componente curricular (presença obrigatória).</li>
+        <li>Atingir médias de aprovação em todas as disciplinas conforme o regimento da UPM.</li>
+        <li>Estar em dia com a secretaria acadêmica (documentação, débitos, etc.).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📐 Estrutura curricular</h3>
+      <ul>
+        <li><strong>Núcleo Básico:</strong> Disciplinas de ciências exatas, humanidades e formação geral (Cálculo, Física, Química, Ética, Empreendedorismo, etc.).</li>
+        <li><strong>Núcleo Profissionalizante:</strong> Disciplinas técnicas da área de engenharia que fundamentam a prática profissional.</li>
+        <li><strong>Núcleo Específico:</strong> Disciplinas centrais de Engenharia de Produção (Gestão da Qualidade, Logística, Pesquisa Operacional, etc.).</li>
+        <li><strong>Projetos Integradores:</strong> Componente prática avaliada por participação e entrega — obrigatório realizar ao menos 4.</li>
+        <li><strong>TCC I e TCC II:</strong> Trabalho de Conclusão de Curso nas etapas 9 e 10.</li>
+        <li><strong>Optativas:</strong> Uma disciplina optativa oferecida na 8ª etapa (Business Analytics, Gestão de Conhecimento ou Pesquisa de Mercado).</li>
+      </ul>
+    </div>
+
+    <div class="alert alert-red">
+      ⚠️ <strong>Atenção:</strong> A reprovação por falta (abaixo de <strong>75% de frequência</strong>) em qualquer componente obrigatória implica em reprovação direta, sem direito a substituição ou exame final.
+    </div>
+
+    <div class="card">
+      <h3>🔢 Cálculo da carga horária de créditos</h3>
+      <p>Cada componente exibe seus créditos no formato <strong>(Sala de Aula / Laboratório / EaD)</strong>. Exemplo: <code>(3 2 0)</code> = 3 aulas teóricas + 2 de laboratório + 0 EaD por semana. Cada crédito equivale a 1 hora-aula semanal por semestre.</p>
+    </div>
+  </div>
+
+  <!-- ===================== MATRIZ CURRICULAR ===================== -->
+  <div id="tab-matriz" class="panel">
+    <div class="page-title">
+      <div class="icon">📚</div>
+      <div>
+        <h2>Matriz Curricular 2021</h2>
+        <p>Todas as disciplinas por etapa — Engenharia de Produção (v2019.1)</p>
+      </div>
+    </div>
+
+    <div class="alert">
+      📌 Créditos no formato <strong>(Sala de Aula · Laboratório · EaD)</strong> por semana. Use o filtro para navegar por etapa. A coluna <strong>Núcleo</strong> indica o eixo de formação da disciplina.
+    </div>
+
+    <div style="margin-bottom:16px; display:flex; gap:8px; flex-wrap:wrap;">
+      <button class="filter-btn active" onclick="filterEtapa('all', this)" style="background:var(--red);color:white;border:none;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">Todas</button>
+      <button class="filter-btn" onclick="filterEtapa('1', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 1</button>
+      <button class="filter-btn" onclick="filterEtapa('2', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 2</button>
+      <button class="filter-btn" onclick="filterEtapa('3', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 3</button>
+      <button class="filter-btn" onclick="filterEtapa('4', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 4</button>
+      <button class="filter-btn" onclick="filterEtapa('5', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 5</button>
+      <button class="filter-btn" onclick="filterEtapa('6', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 6</button>
+      <button class="filter-btn" onclick="filterEtapa('7', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 7</button>
+      <button class="filter-btn" onclick="filterEtapa('8', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 8 + Optativas</button>
+      <button class="filter-btn" onclick="filterEtapa('9', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 9</button>
+      <button class="filter-btn" onclick="filterEtapa('10', this)" style="background:white;border:1px solid var(--gray-200);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Etapa 10</button>
+    </div>
+
+    <div class="table-wrap">
+      <table id="matriz-table">
+        <thead>
+          <tr>
+            <th>Etapa</th>
+            <th>Componente Curricular</th>
+            <th>Código</th>
+            <th>Créditos</th>
+            <th>Núcleo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ETAPA 1 -->
+          <tr data-etapa="1"><td><span class="etapa-badge">1º</span></td><td>Ciência, Tecnologia e Sociedade</td><td>CENEC 51393</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="1"><td><span class="etapa-badge">1º</span></td><td>Ciências do Ambiente</td><td>ENEC 50125</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="1"><td><span class="etapa-badge">1º</span></td><td>Ética e Cidadania I</td><td>ENUN 51118</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="1"><td><span class="etapa-badge">1º</span></td><td>Física Geral e Experimental I</td><td>ENEC 50396</td><td>(3 2 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="1"><td><span class="etapa-badge">1º</span></td><td>Fundamentos de Matemática</td><td>ENEC 50451</td><td>(4 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="1"><td><span class="etapa-badge">1º</span></td><td>Linguagem de Programação</td><td>ENEC 50598</td><td>(3 2 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="1"><td><span class="etapa-badge">1º</span></td><td>Química Geral</td><td>ENEC 50974</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <!-- ETAPA 2 -->
+          <tr data-etapa="2"><td><span class="etapa-badge">2º</span></td><td>Cálculo Diferencial e Integral I</td><td>ENEC 50105</td><td>(4 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="2"><td><span class="etapa-badge">2º</span></td><td>Cálculo Numérico</td><td>ENEC 50111</td><td>(3 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="2"><td><span class="etapa-badge">2º</span></td><td>Desenho Técnico e CAD</td><td>ENEC 50220</td><td>(0 3 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="2"><td><span class="etapa-badge">2º</span></td><td>Física Geral e Experimental II</td><td>ENEC 50397</td><td>(3 2 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="2"><td><span class="etapa-badge">2º</span></td><td>Fundamentos de Administração</td><td>ENEC 50445</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="2"><td><span class="etapa-badge">2º</span></td><td>Geometria Analítica e Vetores</td><td>ENEC 50463</td><td>(3 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="2"><td><span class="etapa-badge">2º</span></td><td>Introdução à Cosmovisão Reformada</td><td>ENUN 51119</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <!-- ETAPA 3 -->
+          <tr data-etapa="3"><td><span class="etapa-badge">3º</span></td><td>Álgebra Linear</td><td>ENEC 50010</td><td>(3 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="3"><td><span class="etapa-badge">3º</span></td><td>Cálculo Diferencial e Integral II</td><td>ENEC 50106</td><td>(4 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="3"><td><span class="etapa-badge">3º</span></td><td>Eletricidade Aplicada</td><td>ENEC 50286</td><td>(0 3 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="3"><td><span class="etapa-badge">3º</span></td><td>Estatística I</td><td>ENEC 50318</td><td>(3 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="3"><td><span class="etapa-badge">3º</span></td><td>Fundamentos de Economia</td><td>ENEC 50449</td><td>(4 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="3"><td><span class="etapa-badge">3º</span></td><td>Gestão da Inovação</td><td>ENEC 50472</td><td>(2 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="3"><td><span class="etapa-badge">3º</span></td><td>Mecânica Geral I</td><td>ENEC 50664</td><td>(3 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <!-- ETAPA 4 -->
+          <tr data-etapa="4"><td><span class="etapa-badge">4º</span></td><td>Cálculo Diferencial e Integral III</td><td>ENEC 50107</td><td>(3 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="4"><td><span class="etapa-badge">4º</span></td><td>Estatística II</td><td>ENEX 50319</td><td>(2 2 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="4"><td><span class="etapa-badge">4º</span></td><td>Fenômenos de Transporte I</td><td>ENEC 50376</td><td>(2 2 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="4"><td><span class="etapa-badge">4º</span></td><td>Fundamentos da Ciência dos Materiais</td><td>ENEX 50420</td><td>(2 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="4"><td><span class="etapa-badge">4º</span></td><td>Gestão de Recursos Humanos</td><td>ENEX 50477</td><td>(2 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="4"><td><span class="etapa-badge">4º</span></td><td>Gestão em Serviços</td><td>ENEX 50481</td><td>(2 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="4"><td><span class="etapa-badge">4º</span></td><td>Princípios de Empreendedorismo</td><td>ENUN 51120</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="4"><td><span class="etapa-badge">4º</span></td><td>Resistência dos Materiais I</td><td>ENEC 50997</td><td>(3 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <!-- ETAPA 5 -->
+          <tr data-etapa="5"><td><span class="etapa-badge">5º</span></td><td>Controle Estatístico de Processos</td><td>ENEX 50183</td><td>(2 2 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="5"><td><span class="etapa-badge">5º</span></td><td>Engenharia da Qualidade e Metrologia</td><td>ENEX 50295</td><td>(3 2 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="5"><td><span class="etapa-badge">5º</span></td><td>Manufatura Integrada por Computador</td><td>ENEX 50637</td><td>(2 2 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="5"><td><span class="etapa-badge">5º</span></td><td>Projetos Empreendedores</td><td>ENUN 51121</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="5"><td><span class="etapa-badge">5º</span></td><td>Sociologia das Organizações</td><td>ENEC 51041</td><td>(2 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="5"><td><span class="etapa-badge">5º</span></td><td>Termodinâmica</td><td>ENEX 51094</td><td>(2 2 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <!-- ETAPA 6 -->
+          <tr data-etapa="6"><td><span class="etapa-badge">6º</span></td><td>Análise de Dados</td><td>ENEX 52959</td><td>(0 2 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="6"><td><span class="etapa-badge">6º</span></td><td>Comportamento Organizacional</td><td>ENEC 50145</td><td>(4 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="6"><td><span class="etapa-badge">6º</span></td><td>Engenharia Econômica I</td><td>ENEX 50299</td><td>(3 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="6"><td><span class="etapa-badge">6º</span></td><td>Ergonomia e Segurança do Trabalho</td><td>ENEX 50311</td><td>(2 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="6"><td><span class="etapa-badge">6º</span></td><td>Inovação e Desenvolvimento de Produto</td><td>ENEX 50526</td><td>(4 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="6"><td><span class="etapa-badge">6º</span></td><td>Pesquisa Operacional I</td><td>ENEC 50808</td><td>(2 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="6"><td><span class="etapa-badge">6º</span></td><td>Planejamento de Processos</td><td>ENEX 50820</td><td>(3 2 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <!-- ETAPA 7 -->
+          <tr data-etapa="7"><td><span class="etapa-badge">7º</span></td><td>Contabilidade e Análise de Balanços</td><td>ENEC 50176</td><td>(4 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="7"><td><span class="etapa-badge">7º</span></td><td>Engenharia Econômica II</td><td>ENEX 50300</td><td>(4 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="7"><td><span class="etapa-badge">7º</span></td><td>Gestão da Qualidade Total</td><td>ENEC 50473</td><td>(2 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="7"><td><span class="etapa-badge">7º</span></td><td>Pesquisa Operacional II</td><td>ENEX 50809</td><td>(3 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="7"><td><span class="etapa-badge">7º</span></td><td>Planejamento e Controle da Produção</td><td>ENEC 50815</td><td>(4 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="7"><td><span class="etapa-badge">7º</span></td><td>Tecnologia da Informação e Comunicação na Indústria</td><td>ENEX 51052</td><td>(3 2 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <!-- ETAPA 8 -->
+          <tr data-etapa="8"><td><span class="etapa-badge">8º</span></td><td>Contabilidade de Custos</td><td>ENEC 50170</td><td>(4 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="8"><td><span class="etapa-badge">8º</span></td><td>Engenharia Econômica III</td><td>ENEX 50301</td><td>(4 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="8"><td><span class="etapa-badge">8º</span></td><td>Gestão Ambiental e Planejamento Energético</td><td>ENEC 50471</td><td>(2 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="8"><td><span class="etapa-badge">8º</span></td><td>Logística e Cadeia de Suprimentos I</td><td>ENEX 50626</td><td>(3 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="8"><td><span class="etapa-badge">8º</span></td><td>Metodologia Científica em Engenharia</td><td>ENEC 50689</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="8"><td><span class="etapa-badge">8º</span></td><td>Planejamento Industrial</td><td>ENEX 50823</td><td>(2 2 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="8"><td><span class="etapa-badge">8º</span></td><td>Optativa – Business Analytics</td><td>ENOP 52960</td><td>(2 0 0)</td><td><span class="tag" style="background:#FFF0F0;border-color:#FFCCCC;color:#990000;">Optativo</span></td></tr>
+          <tr data-etapa="8"><td><span class="etapa-badge">8º</span></td><td>Optativa – Gestão de Conhecimento</td><td>ENOP 51294</td><td>(2 0 0)</td><td><span class="tag" style="background:#FFF0F0;border-color:#FFCCCC;color:#990000;">Optativo</span></td></tr>
+          <tr data-etapa="8"><td><span class="etapa-badge">8º</span></td><td>Optativa – Pesquisa de Mercado</td><td>ENOP 51295</td><td>(2 0 0)</td><td><span class="tag" style="background:#FFF0F0;border-color:#FFCCCC;color:#990000;">Optativo</span></td></tr>
+          <!-- ETAPA 9 -->
+          <tr data-etapa="9"><td><span class="etapa-badge">9º</span></td><td>Logística e Cadeia de Suprimentos II</td><td>ENEX 50627</td><td>(2 2 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="9"><td><span class="etapa-badge">9º</span></td><td>Manufatura Avançada</td><td>ENEX 50636</td><td>(3 0 0)</td><td><span class="tag eixo-prof">Profis.</span></td></tr>
+          <tr data-etapa="9"><td><span class="etapa-badge">9º</span></td><td>Métodos para Tomada de Decisão</td><td>ENEX 50703</td><td>(4 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="9"><td><span class="etapa-badge">9º</span></td><td>Projeto de Fábrica e Instalações</td><td>ENEX 50892</td><td>(2 2 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="9"><td><span class="etapa-badge">9º</span></td><td>Simulação de Sistemas de Produção</td><td>ENEX 51018</td><td>(2 2 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="9"><td><span class="etapa-badge">9º</span></td><td>Estágio Supervisionado</td><td>ORES 51201</td><td>(0 4 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="9"><td><span class="etapa-badge">9º</span></td><td>TCC I</td><td>ORTC 51150</td><td>(0 0 0)</td><td><span class="tag eixo-tcc">TCC</span></td></tr>
+          <!-- ETAPA 10 -->
+          <tr data-etapa="10"><td><span class="etapa-badge">10º</span></td><td>Administração Estratégica e Sustentabilidade</td><td>ENEC 50002</td><td>(4 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="10"><td><span class="etapa-badge">10º</span></td><td>Gestão de Projetos</td><td>ENEC 50476</td><td>(2 2 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="10"><td><span class="etapa-badge">10º</span></td><td>Lean Seis Sigma</td><td>ENEX 50571</td><td>(0 3 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="10"><td><span class="etapa-badge">10º</span></td><td>Logística Reversa</td><td>ENEX 50630</td><td>(3 0 0)</td><td><span class="tag eixo-espec">Específico</span></td></tr>
+          <tr data-etapa="10"><td><span class="etapa-badge">10º</span></td><td>Noções de Direito</td><td>ENEC 50733</td><td>(2 0 0)</td><td><span class="tag eixo-comum">Básico</span></td></tr>
+          <tr data-etapa="10"><td><span class="etapa-badge">10º</span></td><td>TCC II</td><td>ENEC 50451</td><td>(0 0 0)</td><td><span class="tag eixo-tcc">TCC</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert" style="margin-top:16px;">
+      🔗 <strong>Projetos Integradores:</strong> O aluno deve realizar o mínimo de <strong>4 Projetos Integradores</strong> ao longo do curso. Os Projetos Integradores não constam na grade de disciplinas acima, mas são exigidos para a integralização curricular. Consulte a coordenação para mais informações.
+    </div>
+
+    <div class="alert" style="margin-top:8px;">
+      ⭐ <strong>Optativas (8ª etapa):</strong> O aluno deve cursar <strong>uma das três optativas</strong> oferecidas na 8ª etapa: Business Analytics, Gestão de Conhecimento ou Pesquisa de Mercado.
+    </div>
+  </div>
+
+  <!-- ===================== ESTÁGIO ===================== -->
+  <div id="tab-estagio" class="panel">
+    <div class="page-title">
+      <div class="icon">💼</div>
+      <div>
+        <h2>Estágio Supervisionado</h2>
+        <p>240 horas obrigatórias — 2026/1</p>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-badge"><span class="num">240h</span><span class="label">Total obrigatório</span></div>
+      <div class="stat-badge"><span class="num">3</span><span class="label">Relatórios de 80h</span></div>
+      <div class="stat-badge"><span class="num">19/03</span><span class="label">Prazo docs iniciais</span></div>
+      <div class="stat-badge"><span class="num">17/06</span><span class="label">Encerramento</span></div>
+    </div>
+
+    <div class="alert alert-red">
+      ⚠️ <strong>Prazo crítico:</strong> Envie os documentos iniciais por e-mail ao seu professor de estágio até <strong>19 de março de 2026</strong>. Os professores NÃO entrarão em contato com os alunos.
+    </div>
+
+    <div class="card">
+      <h3>👤 Identifique seu perfil</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:6px;">
+        <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:8px;padding:14px;">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:6px;">🎓 Estagiário</div>
+          <div style="font-size:12px;color:var(--gray-600);">TCE formalizado no Mackenzie Carreiras + assinado pela Tutora de Carreira.</div>
+        </div>
+        <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:8px;padding:14px;">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:6px;">💼 Funcionário CLT</div>
+          <div style="font-size:12px;color:var(--gray-600);">50% das horas trabalhadas contam. Precisa de carteira de trabalho + Ficha de Identificação.</div>
+        </div>
+        <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:8px;padding:14px;">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:6px;">🏢 Sócio de empresa</div>
+          <div style="font-size:12px;color:var(--gray-600);">50% das horas. Precisa de cópia do contrato social + Ficha de Identificação.</div>
+        </div>
+        <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:8px;padding:14px;">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:6px;">🔧 Autônomo / Freelancer</div>
+          <div style="font-size:12px;color:var(--gray-600);">Documento via CNPJ, CCM, MEI ou EIRELI. Precisa de supervisor qualificado.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📄 Documentos iniciais (por perfil)</h3>
+      <div class="table-wrap" style="margin-top:8px;">
+        <table>
+          <thead><tr><th>Documento</th><th>Estagiário</th><th>CLT</th><th>Sócio</th><th>Autônomo</th></tr></thead>
+          <tbody>
+            <tr><td>TCE / TAE assinado pela Tutora</td><td style="text-align:center">✅</td><td></td><td></td><td></td></tr>
+            <tr><td>Documento de prestação de serviços (CNPJ/MEI)</td><td></td><td></td><td></td><td style="text-align:center">✅</td></tr>
+            <tr><td>Ficha de Identificação do Estagiário / Profissional</td><td></td><td style="text-align:center">✅</td><td style="text-align:center">✅</td><td></td></tr>
+            <tr><td>Caracterização da Empresa</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td></tr>
+            <tr><td>Programa Básico de Estágio</td><td></td><td style="text-align:center">✅</td><td style="text-align:center">✅</td><td></td></tr>
+            <tr><td>Cópia da Carteira de Trabalho</td><td></td><td style="text-align:center">✅</td><td></td><td></td></tr>
+            <tr><td>Declaração de sócio / acionista / cotista</td><td></td><td></td><td style="text-align:center">✅</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📊 Cronograma de relatórios (2026/1)</h3>
+      <div class="timeline" style="margin-top:8px;">
+        <div class="timeline-item"><div class="date">Até 19/03/2026</div><div class="desc">Entrega dos documentos iniciais ao professor de estágio (por e-mail).</div></div>
+        <div class="timeline-item"><div class="date">Até 17/04/2026</div><div class="desc"><strong>Relatório de Acompanhamento 1</strong> (80 horas ininterruptas). Estagiários: mín. 14 dias úteis. CLT/Sócios/Autônomos: mín. 20 dias úteis.</div></div>
+        <div class="timeline-item"><div class="date">Até 15/05/2026 (Estagiário) | 19/05/2026 (CLT/Sócio/Aut.)</div><div class="desc"><strong>Relatório de Acompanhamento 2</strong> (80 horas ininterruptas).</div></div>
+        <div class="timeline-item"><div class="date">Até 18/06/2026</div><div class="desc"><strong>Relatório de Acompanhamento 3</strong> + Ficha de Aproveitamento Profissional + Relatório Final (Moodle).</div></div>
+        <div class="timeline-item"><div class="date">17/06/2026</div><div class="desc">⛔ <strong>Encerramento das atividades de Estágio Supervisionado.</strong></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Regras importantes</h3>
+      <ul>
+        <li>Relatórios <strong>perdem validade após 30 dias</strong>.</li>
+        <li>Relatórios <strong>iguais a anteriores são anulados</strong>.</li>
+        <li>A assinatura no relatório deve ser do supervisor indicado na Ficha de Caracterização — <strong>nenhuma outra pessoa pode assinar</strong>.</li>
+        <li>A atividade deve estar <strong>obrigatoriamente relacionada à área de Engenharia de Produção</strong>.</li>
+        <li>Assinatura digital é aceita via <strong>DocuSign, Assine Bem ou GOV.BR</strong>.</li>
+        <li><strong>Toda documentação analisada pelo professor deve ser devolvida ao aluno</strong>. Perda de documentação implica reprovação.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>👨‍🏫 Professores supervisores — Engenharia de Produção 2026/1</h3>
+      <div class="table-wrap" style="margin-top:8px;">
+        <table>
+          <thead><tr><th>Alunos (de → até)</th><th>Professor</th><th>E-mail</th></tr></thead>
+          <tbody>
+            <tr><td>Amanda Laurindo → Enzo Canepa Tosi</td><td>Antonio Augusto dos Santos Soares</td><td>antonio.soares@mackenzie.br</td></tr>
+            <tr><td>Fabio Luis Nakabara → Ian Aiach Acho</td><td>João Ferreira Netto</td><td>1001000671@mackenzie.br</td></tr>
+            <tr><td>Isabela Benichio → Leonardo Teixeira Silva de Barros</td><td>Marcelo Carvalhal</td><td>marcelo.carvalhal1@mackenzie.br</td></tr>
+            <tr><td>Leopoldo Pelloso → Matheus Martinelli de Gouvea</td><td>Mario Sérgio Santos</td><td>mario.santos@mackenzie.br</td></tr>
+            <tr><td>Matheus Servija → Pedro Romagnani Caramanica</td><td>Renata Pelissari</td><td>1170785@mackenzie.br</td></tr>
+            <tr><td>Pedro Silva → Vinicius de Oliveira Bertolotti Braga</td><td>Roxana Maria Martinez Orrego</td><td>roxana.orrego@mackenzie.br</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:10px;font-size:12px;color:var(--gray-600);">Tutor de Carreira da Escola de Engenharia: <strong>Prof. Milton Vieira Junior</strong> — 1164515@mackenzie.br</p>
+    </div>
+
+    <div class="card">
+      <h3>🔗 Links úteis — Estágio</h3>
+      <ul>
+        <li><strong>Mackenzie Carreiras (vagas e TCE):</strong> <a href="https://carreiras.mackenzie.br/" target="_blank" style="color:var(--red);">carreiras.mackenzie.br</a></li>
+        <li><strong>Coordenação de Estágios e Carreiras (CDEC):</strong> <a href="https://www.mackenzie.br/aluno-e-antigo-aluno/universidade/area-administrativa-de-estagio/" target="_blank" style="color:var(--red);">mackenzie.br/area-administrativa-de-estagio</a></li>
+        <li><strong>E-mail Estágio EE:</strong> <a href="mailto:ee.estagio@mackenzie.br" style="color:var(--red);">ee.estagio@mackenzie.br</a></li>
+        <li><strong>Escola de Engenharia:</strong> <a href="mailto:ee@mackenzie.br" style="color:var(--red);">ee@mackenzie.br</a></li>
+        <li><strong>Blog de Estágios da EE:</strong> <a href="https://estagiosengenharia.wordpress.com/" target="_blank" style="color:var(--red);">estagiosengenharia.wordpress.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================== ATIVIDADE COMPLEMENTAR ===================== -->
+  <div id="tab-ativ-comp" class="panel">
+    <div class="page-title">
+      <div class="icon">⭐</div>
+      <div>
+        <h2>Atividades Complementares</h2>
+        <p>480 horas obrigatórias para a formatura</p>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-badge"><span class="num">480h</span><span class="label">Total obrigatório</span></div>
+    </div>
+
+    <div class="alert">
+      💡 As Atividades Complementares enriquecem a formação além da sala de aula. Devem ser registradas e aprovadas pela coordenação do curso.
+    </div>
+
+    <div class="card">
+      <h3>📋 O que são Atividades Complementares?</h3>
+      <p>São atividades realizadas pelo aluno fora das disciplinas regulares que complementam sua formação acadêmica e profissional. Incluem participação em eventos, congressos, visitas técnicas, projetos de extensão, publicações, cursos extracurriculares, monitorias, entre outras.</p>
+    </div>
+
+    <div class="card">
+      <h3>📁 Tipos de atividades aceitas (exemplos)</h3>
+      <ul>
+        <li><strong>Eventos científicos e técnicos:</strong> congressos, seminários, simpósios, workshops, palestras (dentro e fora da UPM).</li>
+        <li><strong>Cursos extracurriculares:</strong> idiomas, informática, cursos online certificados na área de Engenharia.</li>
+        <li><strong>Visitas técnicas:</strong> a empresas ou instalações industriais organizadas pelo curso ou por conta própria.</li>
+        <li><strong>Iniciação Científica (IC):</strong> participação em projetos de pesquisa com orientação docente.</li>
+        <li><strong>Publicações:</strong> artigos em revistas, anais de eventos, capítulos de livros.</li>
+        <li><strong>Monitoria:</strong> atuação como monitor em disciplinas do curso.</li>
+        <li><strong>Extensão e projetos sociais:</strong> participação em projetos de extensão universitária.</li>
+        <li><strong>Representação estudantil:</strong> participação em entidades como centros acadêmicos, conselhos e órgãos colegiados.</li>
+        <li><strong>Intercâmbio e mobilidade:</strong> programas de mobilidade acadêmica nacional ou internacional.</li>
+        <li><strong>Premiações e competições:</strong> participação em competições técnicas, hackathons, maratonas.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Como registrar</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Reúna os comprovantes</strong><p>Certificados, declarações, atas de eventos, artigos publicados, etc.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Acesse o portal acadêmico</strong><p>Faça login no sistema da UPM e localize o módulo de Atividades Complementares.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Cadastre as atividades</strong><p>Informe o tipo, a carga horária e anexe o comprovante digitalizado.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Aguarde a aprovação</strong><p>A coordenação analisará e aprovará ou solicitará complementação.</p></div></div>
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      ⚠️ Não deixe para registrar as atividades somente no final do curso. Acumule e registre progressivamente ao longo das etapas.
+    </div>
+
+    <div class="card">
+      <h3>📬 Contato — Extensão e Atividades Complementares</h3>
+      <p>Dúvidas sobre registro, validação ou tipos de atividades aceitas:</p>
+      <p style="margin-top:8px;"><strong>E-mail:</strong> <a href="mailto:ee.extensao@mackenzie.br" style="color:var(--red);">ee.extensao@mackenzie.br</a></p>
+    </div>
+  </div>
+
+  <!-- ===================== ABONO DE FALTA ===================== -->
+  <div id="tab-abono" class="panel">
+    <div class="page-title">
+      <div class="icon">📋</div>
+      <div>
+        <h2>Abono de Faltas</h2>
+        <p>Hipóteses restritas previstas no Regulamento Acadêmico da Graduação</p>
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      ⚠️ <strong>Atenção:</strong> o abono de faltas é admitido <strong>exclusivamente</strong> nas situações previstas na legislação federal vigente e no Regulamento Acadêmico da UPM. Atestado médico comum, viagem, compromisso profissional ou ausência eventual não entram automaticamente como abono.
+    </div>
+
+    <div class="card">
+      <h3>✅ Quando o abono pode ser aplicado</h3>
+      <p>Segundo o Regulamento Acadêmico dos Cursos de Graduação da UPM, o abono de faltas pode ser admitido somente mediante comprovação documentada, quando o discente preencher uma das condições abaixo:</p>
+      <ul>
+        <li><strong>Formação da Reserva / serviço militar:</strong> estudante matriculado em Órgão de Formação da Reserva que seja obrigado a faltar por exercícios ou manobras militares; também se aplica ao Reservista chamado para exercício militar de apresentação ou cerimônia cívica do Dia do Reservista, na forma da lei.</li>
+        <li><strong>Representação na CONAES:</strong> estudante com representação na Comissão Nacional de Avaliação da Educação Superior (CONAES), quando as reuniões coincidirem com o horário das atividades acadêmicas, na forma da lei.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🏥 Atestado médico e faltas por saúde</h3>
+      <p>Ausências por doença ou traumatismo, quando houver impedimento mais prolongado, devem ser analisadas como <strong>Regime Especial de Frequência</strong>, e não como abono comum de falta. Nesses casos, veja a aba <strong>Regime Especial</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>📝 Como encaminhar o pedido</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Separe a comprovação oficial</strong><p>Use documentos formais que demonstrem a convocação, participação ou representação prevista na norma.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Protocole pelo canal institucional</strong><p>Faça o requerimento junto à Secretaria Acadêmica/Portal de Atendimento ao Discente, conforme o fluxo vigente da Universidade.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Aguarde a análise</strong><p>O deferimento depende da verificação da documentação e do enquadramento nas hipóteses previstas no Regulamento Acadêmico.</p></div></div>
+      </div>
+    </div>
+
+    <div class="alert">
+      📌 <strong>Frequência mínima:</strong> nos cursos presenciais, o estudante deve cumprir, no mínimo, <strong>75% da carga horária</strong> de cada componente curricular em que estiver matriculado.
+    </div>
+  </div>
+
+  <!-- ===================== REGIME ESPECIAL ===================== -->
+  <div id="tab-ref" class="panel">
+    <div class="page-title">
+      <div class="icon">🏠</div>
+      <div>
+        <h2>Regime Especial de Frequência</h2>
+        <p>Atendimento excepcional em situações previstas no Regulamento Acadêmico</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📖 O que é o Regime Especial?</h3>
+      <p>O Regime Especial de Frequência é uma forma de atendimento excepcional para o estudante que, por situação prevista na legislação e no Regulamento Acadêmico da UPM, fica temporariamente impedido de frequentar as aulas, mas mantém condições intelectuais e emocionais para realizar atividades acadêmicas em local de repouso.</p>
+    </div>
+
+    <div class="card">
+      <h3>✅ Situações previstas</h3>
+      <ul>
+        <li><strong>Doenças ou traumatismos:</strong> ocorrência isolada e esporádica, com afastamento igual ou superior a <strong>5 dias letivos</strong>, mediante laudo médico circunstanciado.</li>
+        <li><strong>Gestantes:</strong> atendimento excepcional a partir do início do <strong>8º mês de gestação</strong>, com atestado médico e requerimento dirigido à PRCA.</li>
+        <li><strong>Atividade desportiva nacional:</strong> participação em representação desportiva nacional, com documento oficial que comprove a participação no evento.</li>
+        <li><strong>Atividade acadêmica nacional ou de interesse institucional:</strong> participação em atividade acadêmica de abrangência nacional ou de interesse institucional, com documento hábil de comprovação.</li>
+        <li><strong>Cursos a distância:</strong> nos casos previstos, pode haver análise para remarcação de avaliações presenciais nos polos.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📄 Documentos e requisitos principais</h3>
+      <ul>
+        <li>Requerimento protocolizado pelo estudante ou procurador, preferencialmente por formulário <strong>on-line</strong>.</li>
+        <li>Laudo médico, quando aplicável, com descrição da impossibilidade de frequência às aulas e indicação de que o estudante pode prosseguir com atividades escolares em repouso.</li>
+        <li>Diagnóstico codificado pelo <strong>CID</strong>, quando houver laudo médico.</li>
+        <li>Assinatura, identificação e número de inscrição profissional do médico.</li>
+        <li>Para gestantes: período de afastamento necessário, datas de início e término, data provável do parto e demais dados médicos exigidos.</li>
+        <li>Para atividades desportivas ou acadêmicas: comprovação oficial da participação e atendimento aos prazos previstos na norma.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>⏱️ Prazos e limites importantes</h3>
+      <ul>
+        <li>Em doenças ou traumatismos, o afastamento deve ser igual ou superior a <strong>5 dias letivos</strong>.</li>
+        <li>Em atividade desportiva nacional, o afastamento deve ser igual ou superior a <strong>5 dias letivos</strong> e não superior a <strong>25% do semestre letivo</strong>.</li>
+        <li>Em atividade acadêmica nacional ou de interesse institucional, o requerimento deve ser protocolizado até <strong>3 dias letivos após o retorno</strong>; o afastamento deve ser igual ou superior a <strong>5 dias letivos</strong> e não superior a <strong>25% do semestre letivo</strong>.</li>
+        <li>A vigência do benefício concedido retroage à data do impedimento constatado.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Como funciona depois do deferimento</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>O pedido é analisado pela Universidade</strong><p>A documentação é encaminhada para análise e andamento pelos setores competentes, com participação da Coordenação do curso.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>A Coordenação define as atividades</strong><p>As atividades escolares deverão ser cumpridas durante o período de afastamento, com entrega no prazo estabelecido pelo Coordenador do curso.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>As avaliações continuam obrigatórias</strong><p>Ao final do afastamento, o estudante deve realizar as avaliações intermediária e final, com os mesmos critérios adotados para sua turma.</p></div></div>
+      </div>
+    </div>
+
+    <div class="alert">
+      💡 O Regime Especial não é “férias acadêmicas”: ele muda o modo de acompanhamento das atividades, mas mantém as exigências de aprendizagem, prazos e avaliações.
+    </div>
+  </div>
+
+  <!-- ===================== APROVEITAMENTO ===================== -->
+  <div id="tab-aproveitamento" class="panel">
+    <div class="page-title">
+      <div class="icon">🔄</div>
+      <div>
+        <h2>Aproveitamento de Disciplinas</h2>
+        <p>Reconhecimento de estudos realizados anteriormente, conforme análise da Coordenação</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📖 O que é</h3>
+      <p>O aproveitamento de estudos permite que componentes curriculares já cursados e aprovados sejam analisados para possível dispensa de disciplinas da matriz curricular da UPM. O pedido não é automático: depende de documentação, equivalência de conteúdo e compatibilidade de carga horária.</p>
+    </div>
+
+    <div class="card">
+      <h3>✅ Condições gerais previstas</h3>
+      <ul>
+        <li>O componente deve ter sido cursado com aprovação em curso de Graduação reconhecido ou em Pós-Graduação <em>Stricto Sensu</em> recomendada pela CAPES, em Instituição de Ensino Superior credenciada.</li>
+        <li>O aproveitamento é permitido, como regra, para estudos concluídos há no máximo <strong>10 anos</strong>, contados da data de cumprimento do componente com aprovação.</li>
+        <li>Componentes cursados há mais de <strong>10 anos</strong> podem exigir rendimento mínimo de <strong>50%</strong> em processo avaliativo estabelecido pelo Coordenador do curso.</li>
+        <li>O componente pleiteado deve ter <strong>carga horária compatível</strong> e <strong>conteúdo programático equivalente</strong>.</li>
+        <li>Não pode ser aceita solicitação referente a estudos realizados em situação de <strong>pendência judicial</strong> na instituição em que os créditos foram cursados.</li>
+        <li>O total da carga horária aproveitada não pode exceder <strong>2/3 da carga horária</strong> exigida para integralização do curso de Graduação da UPM.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📄 Documentos necessários</h3>
+      <p>O pedido deve ser instruído com todos os documentos comprobatórios referentes ao componente curricular cursado, especialmente aqueles que permitam verificar:</p>
+      <ul>
+        <li>aprovação no componente curricular;</li>
+        <li>carga horária cumprida;</li>
+        <li>conteúdo programático/ementa;</li>
+        <li>vínculo da instituição e regularidade do curso, quando solicitado.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Como solicitar</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Reúna histórico, ementas e programas</strong><p>Organize a documentação oficial que comprove carga horária, conteúdo e aprovação.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Abra o requerimento pelo canal institucional</strong><p>Indique os componentes da UPM para os quais deseja pedir dispensa.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Observe o prazo divulgado pela Universidade</strong><p>Os prazos de solicitação são definidos a cada período letivo pela área acadêmica competente.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Aguarde a análise da Coordenação</strong><p>A análise e a deliberação do pedido são de competência da respectiva Coordenadoria.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Acompanhe o resultado</strong><p>Se deferido, o aproveitamento passa a produzir efeitos acadêmicos e financeiros conforme as regras institucionais.</p></div></div>
+      </div>
+    </div>
+
+    <div class="alert">
+      💰 <strong>Efeito financeiro:</strong> quando houver aproveitamento de estudos, o efeito financeiro sobre as parcelas passa a valer a partir da data de protocolização do pedido, sem direito à devolução de valores pagos anteriormente.
+    </div>
+
+    <div class="alert alert-red">
+      ⚠️ Não se matricule contando com dispensa automática. O componente só deixa de ser exigido depois do deferimento formal do pedido.
+    </div>
+  </div>
+
+  <!-- ===================== PROJETO INTEGRADOR ===================== -->
+  <div id="tab-pi" class="panel">
+    <div class="page-title">
+      <div class="icon">🔬</div>
+      <div>
+        <h2>Projetos Integradores</h2>
+        <p>PI I ao PI VIII — componentes transversais da matriz curricular</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📖 O que são os Projetos Integradores?</h3>
+      <p>Os Projetos Integradores são componentes curriculares presentes nas etapas 1 a 8 do curso. O aluno deve realizar o <strong>mínimo de 4 Projetos Integradores</strong> para a integralização curricular. Têm como objetivo integrar os conhecimentos das diferentes disciplinas de cada semestre em torno de um projeto prático, desenvolvido em equipe ao longo do período. Aparecem com <strong>carga horária 0 créditos</strong> na grade, pois são avaliados pela participação e entrega, não por horas-aula convencionais.
+    </div>
+
+    <div class="card">
+      <h3>📅 PI por etapa</h3>
+      <div class="table-wrap" style="margin-top:8px;">
+        <table>
+          <thead><tr><th>PI</th><th>Etapa</th><th>Código</th></tr></thead>
+          <tbody>
+            <tr><td>Projeto Integrador I</td><td>1º semestre</td><td>ENEC 50838</td></tr>
+            <tr><td>Projeto Integrador II</td><td>2º semestre</td><td>ENEC 50839</td></tr>
+            <tr><td>Projeto Integrador III</td><td>3º semestre</td><td>ENEC 50840</td></tr>
+            <tr><td>Projeto Integrador IV</td><td>4º semestre</td><td>ENEC 50841</td></tr>
+            <tr><td>Projeto Integrador V</td><td>5º semestre</td><td>ENEC 50842</td></tr>
+            <tr><td>Projeto Integrador VI</td><td>6º semestre</td><td>ENEC 50927</td></tr>
+            <tr><td>Projeto Integrador VII</td><td>7º semestre</td><td>ENEC 50928</td></tr>
+            <tr><td>Projeto Integrador VIII</td><td>8º semestre</td><td>ENEC 50929</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚙️ Como funcionam</h3>
+      <ul>
+        <li>Cada PI é vinculado ao tema central do semestre, integrando as disciplinas daquele período.</li>
+        <li>São desenvolvidos em <strong>grupos</strong>, com orientação de professores designados.</li>
+        <li>A avaliação é feita por <strong>apresentação e entrega de relatório</strong> ao final do semestre.</li>
+        <li>A reprovação em um PI pode impactar o avanço na matriz curricular.</li>
+        <li>Os PIs envolvem visitas técnicas, estudos de caso, protótipos e outras atividades práticas conforme a etapa.</li>
+      </ul>
+    </div>
+
+    <div class="alert alert-green">
+      ✅ Os Projetos Integradores são parte central da metodologia ativa da UPM. Participar ativamente aumenta significativamente o aprendizado e o preparo profissional.
+    </div>
+  </div>
+
+  <!-- ===================== TCC ===================== -->
+  <div id="tab-tcc" class="panel">
+    <div class="page-title">
+      <div class="icon">📝</div>
+      <div>
+        <h2>Trabalho de Conclusão de Curso (TCC)</h2>
+        <p>TCC I (9º semestre) e TCC II (10º semestre) — 108 horas obrigatórias</p>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-badge"><span class="num">108h</span><span class="label">Carga total (TCC I + II)</span></div>
+      <div class="stat-badge"><span class="num">9º</span><span class="label">Semestre — TCC I</span></div>
+      <div class="stat-badge"><span class="num">10º</span><span class="label">Semestre — TCC II</span></div>
+    </div>
+
+    <div class="card">
+      <h3>📖 O que é o TCC</h3>
+      <p>O Trabalho de Conclusão de Curso é um trabalho acadêmico individual (ou em grupo, conforme orientação do curso) que demonstra a capacidade do aluno de aplicar os conhecimentos adquiridos ao longo do curso em um problema real ou temático da Engenharia de Produção. É composto por duas etapas semestrais consecutivas: TCC I e TCC II.</p>
+    </div>
+
+    <div class="card">
+      <h3>📋 TCC I — 9º semestre (Código: ORTC 51150)</h3>
+      <ul>
+        <li>Definição do tema, problema de pesquisa e objetivos.</li>
+        <li>Elaboração da justificativa e revisão bibliográfica.</li>
+        <li>Definição da metodologia de pesquisa.</li>
+        <li>Entrega do projeto de pesquisa (pré-qualificação).</li>
+        <li>Apresentação do projeto para banca de avaliação.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📋 TCC II — 10º semestre (Código: ENEC 50451)</h3>
+      <ul>
+        <li>Desenvolvimento completo do trabalho com base no projeto aprovado no TCC I.</li>
+        <li>Coleta e análise de dados / resultados.</li>
+        <li>Conclusões e considerações finais.</li>
+        <li>Entrega da monografia ou relatório técnico completo.</li>
+        <li>Defesa oral para banca examinadora (professores + avaliador externo).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Temas de pesquisa</h3>
+      <p>O TCC pode abordar qualquer área da Engenharia de Produção, como: Gestão da Qualidade, Logística, Pesquisa Operacional, Ergonomia, Planejamento Industrial, Sustentabilidade, Inovação, Simulação, Lean Manufacturing, entre outros. O tema deve ser aprovado pelo orientador.</p>
+    </div>
+
+    <div class="alert alert-red">
+      ⚠️ A aprovação em TCC I é pré-requisito para matrícula em TCC II. Certifique-se de cumprir todos os prazos do orientador para não atrasar a conclusão do curso.
+    </div>
+
+    <div class="card">
+      <h3>📬 Contato — TCC</h3>
+      <p><strong>E-mail TCC:</strong> <a href="mailto:ee.tcc@mackenzie.br" style="color:var(--red);">ee.tcc@mackenzie.br</a></p>
+      <p style="margin-top:6px;"><strong>Coordenação de Engenharia de Produção:</strong> <a href="mailto:marcelo.fonseca@mackenzie.br" style="color:var(--red);">marcelo.fonseca@mackenzie.br</a></p>
+      <p style="margin-top:6px;"><strong>Escola de Engenharia:</strong> <a href="mailto:ee@mackenzie.br" style="color:var(--red);">ee@mackenzie.br</a></p>
+    </div>
+  </div>
+
+  <!-- ===================== INTERNACIONALIZAÇÃO ===================== -->
+  <div id="tab-internacionalizacao" class="panel">
+    <div class="page-title">
+      <div class="icon">🌎</div>
+      <div>
+        <h2>Internacionalização</h2>
+        <p>Oportunidades internacionais para estudantes de Engenharia de Produção</p>
+      </div>
+    </div>
+
+    <div class="alert alert-green">
+      🌍 A Engenharia de Produção conta com oportunidades de <strong>dupla titulação</strong>, ampliando a formação acadêmica e a experiência internacional dos estudantes.
+    </div>
+
+    <div class="card">
+      <h3>🎓 Dupla titulação</h3>
+      <p>Na dupla titulação, o estudante realiza parte da trajetória acadêmica em uma instituição parceira no exterior e, atendidos os requisitos acadêmicos e administrativos, pode obter titulação reconhecida pelas instituições envolvidas.</p>
+      <div class="table-wrap" style="margin-top:12px;">
+        <table>
+          <thead>
+            <tr><th>Instituição / Programa</th><th>País</th><th>Observação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Missouri</strong></td><td>Estados Unidos</td><td>Possibilidade de dupla titulação para estudantes elegíveis da Engenharia de Produção.</td></tr>
+            <tr><td><strong>ISEP - Porto</strong></td><td>Portugal</td><td>Possibilidade de dupla titulação com o Instituto Superior de Engenharia do Porto.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>✅ Por que vale a pena considerar?</h3>
+      <ul>
+        <li>Amplia a vivência acadêmica e cultural, como uma ponte entre a formação no Mackenzie e o mundo profissional global.</li>
+        <li>Fortalece o currículo para atuação em empresas multinacionais, cadeias globais de suprimentos, operações internacionais e projetos de inovação.</li>
+        <li>Estimula o desenvolvimento de autonomia, comunicação intercultural e domínio de outro ambiente acadêmico.</li>
+        <li>Pode favorecer redes de contato, pesquisa aplicada, estágios e oportunidades futuras de pós-graduação.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🧭 Como se preparar</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Planeje cedo</strong><p>Converse com a Coordenação para entender em qual etapa do curso a mobilidade pode fazer mais sentido.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Acompanhe editais e requisitos</strong><p>Verifique desempenho acadêmico, documentação, prazos, proficiência em idioma e regras específicas de cada convênio.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Organize a vida acadêmica</strong><p>Confira equivalências, pré-requisitos, disciplinas pendentes, estágio, atividades complementares e possíveis impactos na integralização curricular.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Prepare documentação e idioma</strong><p>Histórico escolar, passaporte, comprovações de proficiência e documentos financeiros podem ser solicitados conforme o programa.</p></div></div>
+      </div>
+    </div>
+
+    <div class="alert">
+      📌 As condições de participação, vagas, prazos, custos, idioma exigido e critérios de seleção podem variar por edital e por instituição parceira. Antes de tomar decisão, confirme as regras vigentes com a Coordenação do curso e com a área de Internacionalização da Universidade.
+    </div>
+  </div>
+
+  <!-- ===================== CALENDÁRIO ===================== -->
+  <div id="tab-calendario" class="panel">
+    <div class="page-title">
+      <div class="icon">📅</div>
+      <div>
+        <h2>Calendário Acadêmico 2026</h2>
+        <p>Datas e prazos importantes para Graduação Presencial — Campus Higienópolis</p>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-badge"><span class="num">114</span><span class="label">Dias letivos (1º sem.)</span></div>
+      <div class="stat-badge"><span class="num">114</span><span class="label">Dias letivos (2º sem.)</span></div>
+    </div>
+
+    <!-- 1º SEMESTRE -->
+    <div class="calendar-section">
+      <h3>📌 1º Semestre de 2026</h3>
+      <div class="cal-grid">
+        <div class="cal-item"><div class="cal-date">05–20/01</div><div><div class="cal-title">Recesso Escolar</div><div class="cal-sub">Docentes e discentes</div></div></div>
+        <div class="cal-item"><div class="cal-date">19–30/01</div><div><div class="cal-title">Matrícula Sequencial</div><div class="cal-sub">Período de matrícula em disciplinas</div></div></div>
+        <div class="cal-item"><div class="cal-date">26/01</div><div><div class="cal-title">Reunião de Abertura</div><div class="cal-sub">Todos os campi</div></div></div>
+        <div class="cal-item"><div class="cal-date">27–28/01</div><div><div class="cal-title">XII Fórum de Aprendizagem Transformadora</div><div class="cal-sub">Docentes</div></div></div>
+        <div class="cal-item"><div class="cal-date">29–30/01</div><div><div class="cal-title">Planejamento Pedagógico</div><div class="cal-sub">Unidades Acadêmicas</div></div></div>
+        <div class="cal-item"><div class="cal-date">02–03/02</div><div><div class="cal-title">Recepção aos Calouros</div><div class="cal-sub">Todos os campi</div></div></div>
+        <div class="cal-item"><div class="cal-date">09/02</div><div><div class="cal-title">Início das Aulas (Veteranos)</div><div class="cal-sub">Graduação presencial</div></div></div>
+        <div class="cal-item"><div class="cal-date">16–18/02</div><div><div class="cal-title">Carnaval — Sem Aulas</div><div class="cal-sub">Feriado nacional</div></div></div>
+        <div class="cal-item"><div class="cal-date">24–26/02</div><div><div class="cal-title">Pró-Calouro (Perfil do Ingressante)</div><div class="cal-sub">Calouros</div></div></div>
+        <div class="cal-item"><div class="cal-date">03–04/04</div><div><div class="cal-title">Sem Aulas (Ponte)</div><div class="cal-sub">Feriado nacional / Páscoa</div></div></div>
+        <div class="cal-item"><div class="cal-date">11/04</div><div><div class="cal-title">Limite NI1 (Lançamento)</div><div class="cal-sub">Professores</div></div></div>
+        <div class="cal-item"><div class="cal-date">20–21/04</div><div><div class="cal-title">Sem Aulas — Tiradentes</div><div class="cal-sub">Feriado nacional</div></div></div>
+        <div class="cal-item"><div class="cal-date">30/04</div><div><div class="cal-title">Prazo Trancamento Geral</div><div class="cal-sub">Último dia — alunos</div></div></div>
+        <div class="cal-item"><div class="cal-date">01/05</div><div><div class="cal-title">Dia do Trabalho — Sem Aulas</div><div class="cal-sub">Feriado nacional</div></div></div>
+        <div class="cal-item"><div class="cal-date">13/05</div><div><div class="cal-title">Prova Integrada</div><div class="cal-sub">ENADE / todos os alunos</div></div></div>
+        <div class="cal-item"><div class="cal-date">04–06/06</div><div><div class="cal-title">Sem Aulas — Corpus Christi</div><div class="cal-sub">Feriado nacional / ponte</div></div></div>
+        <div class="cal-item"><div class="cal-date">03/06</div><div><div class="cal-title">Limite NI2 (Lançamento)</div><div class="cal-sub">Professores</div></div></div>
+        <div class="cal-item"><div class="cal-date">09/06</div><div><div class="cal-title">Prazo Trancamento de Componente</div><div class="cal-sub">Último dia — alunos</div></div></div>
+        <div class="cal-item"><div class="cal-date">08–13/06</div><div><div class="cal-title">Avaliações Substitutivas</div><div class="cal-sub">Graduação presencial</div></div></div>
+        <div class="cal-item"><div class="cal-date">15–20/06</div><div><div class="cal-title">Avaliações Finais</div><div class="cal-sub">Graduação presencial</div></div></div>
+        <div class="cal-item"><div class="cal-date">20/06</div><div><div class="cal-title">Último Dia para Notas Finais</div><div class="cal-sub">Lançamento pelos professores</div></div></div>
+        <div class="cal-item"><div class="cal-date">27/06</div><div><div class="cal-title">Término das Atividades Acadêmicas</div><div class="cal-sub">1º semestre</div></div></div>
+        <div class="cal-item"><div class="cal-date">29/06–28/07</div><div><div class="cal-title">Férias Docentes / Recesso</div><div class="cal-sub">Entre semestres</div></div></div>
+      </div>
+    </div>
+
+    <!-- 2º SEMESTRE -->
+    <div class="calendar-section">
+      <h3>📌 2º Semestre de 2026</h3>
+      <div class="cal-grid">
+        <div class="cal-item"><div class="cal-date">20–31/07</div><div><div class="cal-title">Matrícula Sequencial</div><div class="cal-sub">Período de matrícula</div></div></div>
+        <div class="cal-item"><div class="cal-date">29/07</div><div><div class="cal-title">Reunião de Abertura</div><div class="cal-sub">Todos os campi</div></div></div>
+        <div class="cal-item"><div class="cal-date">30–31/07</div><div><div class="cal-title">XIII Fórum de Aprendizagem</div><div class="cal-sub">Docentes</div></div></div>
+        <div class="cal-item"><div class="cal-date">03–04/08</div><div><div class="cal-title">Recepção Calouros e Planejamento</div><div class="cal-sub">Todos os campi</div></div></div>
+        <div class="cal-item"><div class="cal-date">10/08</div><div><div class="cal-title">Início das Aulas (Veteranos)</div><div class="cal-sub">Graduação presencial</div></div></div>
+        <div class="cal-item"><div class="cal-date">07/09</div><div><div class="cal-title">Independência — Sem Aulas</div><div class="cal-sub">Feriado nacional</div></div></div>
+        <div class="cal-item"><div class="cal-date">03/10</div><div><div class="cal-title">Limite NI1 (Lançamento)</div><div class="cal-sub">Professores</div></div></div>
+        <div class="cal-item"><div class="cal-date">12/10</div><div><div class="cal-title">N. Sra. Aparecida — Sem Aulas</div><div class="cal-sub">Feriado nacional</div></div></div>
+        <div class="cal-item"><div class="cal-date">13/10</div><div><div class="cal-title">Dia do Professor (antecipado)</div><div class="cal-sub">Sem aulas</div></div></div>
+        <div class="cal-item"><div class="cal-date">30/10</div><div><div class="cal-title">Prazo Trancamento Geral</div><div class="cal-sub">Último dia — alunos</div></div></div>
+        <div class="cal-item"><div class="cal-date">04/11</div><div><div class="cal-title">Prova Integrada</div><div class="cal-sub">Todos os alunos</div></div></div>
+        <div class="cal-item"><div class="cal-date">02/11</div><div><div class="cal-title">Finados — Sem Aulas</div><div class="cal-sub">Feriado nacional</div></div></div>
+        <div class="cal-item"><div class="cal-date">28/11</div><div><div class="cal-title">Limite NI2 (Lançamento)</div><div class="cal-sub">Professores</div></div></div>
+        <div class="cal-item"><div class="cal-date">20–21/11</div><div><div class="cal-title">Consciência Negra — Sem Aulas</div><div class="cal-sub">Feriado nacional / ponte</div></div></div>
+        <div class="cal-item"><div class="cal-date">01/12</div><div><div class="cal-title">Prazo Trancamento de Componente</div><div class="cal-sub">Último dia — alunos</div></div></div>
+        <div class="cal-item"><div class="cal-date">30/11–05/12</div><div><div class="cal-title">Avaliações Substitutivas</div><div class="cal-sub">Graduação presencial</div></div></div>
+        <div class="cal-item"><div class="cal-date">07–12/12</div><div><div class="cal-title">Avaliações Finais</div><div class="cal-sub">Graduação presencial</div></div></div>
+        <div class="cal-item"><div class="cal-date">12/12</div><div><div class="cal-title">Último Dia para Notas Finais</div><div class="cal-sub">Lançamento pelos professores</div></div></div>
+        <div class="cal-item"><div class="cal-date">19/12</div><div><div class="cal-title">Término das Atividades Acadêmicas</div><div class="cal-sub">2º semestre</div></div></div>
+      </div>
+    </div>
+
+    <!-- DATAS RELEVANTES -->
+    <div class="calendar-section">
+      <h3>🌟 Eventos relevantes do ano</h3>
+      <div class="cal-grid">
+        <div class="cal-item"><div class="cal-date">25/03</div><div><div class="cal-title">Oficina INOVAMACK</div></div></div>
+        <div class="cal-item"><div class="cal-date">04–09/05</div><div><div class="cal-title">Semana da Autoavaliação</div></div></div>
+        <div class="cal-item"><div class="cal-date">20/05</div><div><div class="cal-title">V Summit INOVAMACK</div></div></div>
+        <div class="cal-item"><div class="cal-date">24–28/08</div><div><div class="cal-title">Semana Internacional</div></div></div>
+        <div class="cal-item"><div class="cal-date">10/09</div><div><div class="cal-title">Jornada INOVAMACK</div></div></div>
+        <div class="cal-item"><div class="cal-date">06–09/10</div><div><div class="cal-title">XXII Jornada de Iniciação Científica</div><div class="cal-sub">Campus Higienópolis</div></div></div>
+        <div class="cal-item"><div class="cal-date">15/10</div><div><div class="cal-title">Homenagem aos Professores</div><div class="cal-sub">Campus Higienópolis</div></div></div>
+        <div class="cal-item"><div class="cal-date">18/10</div><div><div class="cal-title">Dia do Mackenzista (156 anos)</div></div></div>
+        <div class="cal-item"><div class="cal-date">09–14/11</div><div><div class="cal-title">Semana da Autoavaliação</div></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📊 Dias letivos por campus (Higienópolis)</h3>
+      <div class="table-wrap" style="margin-top:8px;">
+        <table>
+          <thead><tr><th>Semestre</th><th>2ª</th><th>3ª</th><th>4ª</th><th>5ª</th><th>6ª</th><th>Sáb.</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1º semestre</strong></td><td>19</td><td>19</td><td>20</td><td>20</td><td>18</td><td>18</td><td><strong>114</strong></td></tr>
+            <tr><td><strong>2º semestre</strong></td><td>17</td><td>19</td><td>20</td><td>20</td><td>19</td><td>19</td><td><strong>114</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER CONTATOS -->
+<footer style="background:var(--red-dark);color:white;padding:20px 28px;margin-top:0;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;opacity:0.7;margin-bottom:12px;">Contatos Úteis — Escola de Engenharia Mackenzie</div>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;">
+      <div>
+        <div style="font-size:11px;opacity:0.65;font-weight:600;">Coordenação Eng. Produção</div>
+        <a href="mailto:marcelo.fonseca@mackenzie.br" style="color:white;font-size:13px;">marcelo.fonseca@mackenzie.br</a>
+      </div>
+      <div>
+        <div style="font-size:11px;opacity:0.65;font-weight:600;">Escola de Engenharia</div>
+        <a href="mailto:ee@mackenzie.br" style="color:white;font-size:13px;">ee@mackenzie.br</a>
+      </div>
+      <div>
+        <div style="font-size:11px;opacity:0.65;font-weight:600;">TCC</div>
+        <a href="mailto:ee.tcc@mackenzie.br" style="color:white;font-size:13px;">ee.tcc@mackenzie.br</a>
+      </div>
+      <div>
+        <div style="font-size:11px;opacity:0.65;font-weight:600;">Estágio</div>
+        <a href="mailto:ee.estagio@mackenzie.br" style="color:white;font-size:13px;">ee.estagio@mackenzie.br</a>
+      </div>
+      <div>
+        <div style="font-size:11px;opacity:0.65;font-weight:600;">Extensão e Ativ. Complementar</div>
+        <a href="mailto:ee.extensao@mackenzie.br" style="color:white;font-size:13px;">ee.extensao@mackenzie.br</a>
+      </div>
+      <div>
+        <div style="font-size:11px;opacity:0.65;font-weight:600;">Mackenzie Carreiras</div>
+        <a href="https://carreiras.mackenzie.br/" target="_blank" style="color:white;font-size:13px;">carreiras.mackenzie.br</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  document.querySelectorAll('.nav-list button').forEach(b => b.classList.remove('active'));
+  const target = document.getElementById('tab-' + id);
+  if (target) {
+    target.classList.add('active');
+    target.style.display = 'block';
+  }
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.panel').forEach(p => {
+    p.style.display = p.classList.contains('active') ? 'block' : 'none';
+  });
+});
+
+function filterEtapa(etapa, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.style.background = 'white';
+    b.style.color = '#222';
+    b.style.border = '1px solid #E5E5E5';
+  });
+  btn.style.background = '#CC0000';
+  btn.style.color = 'white';
+  btn.style.border = 'none';
+
+  const rows = document.querySelectorAll('#matriz-table tbody tr');
+  rows.forEach(row => {
+    if (etapa === 'all') {
+      row.style.display = '';
+    } else {
+      row.style.display = row.dataset.etapa === etapa ? '' : 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
