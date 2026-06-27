@@ -476,12 +476,14 @@
       <li><button onclick="showTab('matriz', this)">📚 Matriz Curricular</button></li>
       <li><button onclick="showTab('estagio', this)">💼 Estágio</button></li>
       <li><button onclick="showTab('ativ-comp', this)">⭐ Ativ. Complementar</button></li>
+      <li><button onclick="showTab('extensao', this)">🌱 Extensão</button></li>
       <li><button onclick="showTab('abono', this)">📋 Abono de Falta</button></li>
       <li><button onclick="showTab('ref', this)">🏠 Regime Especial</button></li>
       <li><button onclick="showTab('aproveitamento', this)">🔄 Aproveitamento</button></li>
       <li><button onclick="showTab('pi', this)">🔬 Proj. Integrador</button></li>
       <li><button onclick="showTab('tcc', this)">📝 TCC</button></li>
       <li><button onclick="showTab('internacionalizacao', this)">🌎 Internacionalização</button></li>
+      <li><button onclick="showTab('contatos', this)">📬 Contatos</button></li>
       <li><button onclick="showTab('calendario', this)">📅 Calendário</button></li>
     </ul>
   </nav>
@@ -521,7 +523,7 @@
     <div class="card">
       <h3>📌 Condições gerais para colação de grau</h3>
       <ul>
-        <li>Integralizar todas as componentes curriculares obrigatórias das <strong>10 etapas</strong> da Matriz Curricular 2021.</li>
+        <li>Integralizar todas as componentes curriculares obrigatórias das <strong>10 etapas</strong>.</li>
         <li>Completar <strong>240 horas de Estágio Supervisionado</strong> aprovadas pelo professor orientador.</li>
         <li>Completar <strong>480 horas de Atividades Complementares</strong> aprovadas pela coordenação.</li>
         <li>Concluir e ser aprovado em <strong>TCC I e TCC II</strong> (108 horas no total).</li>
@@ -544,6 +546,15 @@
       </ul>
     </div>
 
+    <div class="card">
+      <h3>🔗 Documentos e links importantes</h3>
+      <ul>
+        <li><a href="https://www.mackenzie.br/fileadmin/ARQUIVOS/Public/5-graduacao/upm-higienopolis/eng-producao/2025/PPC_2022_-_Engenharia_Produ%C3%A7%C3%A3o_Higien%C3%B3polis__11_11_2022.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--red-dark);font-weight:700;">Projeto Pedagógico do Curso — PPC de Engenharia de Produção</a></li>
+        <li><a href="https://www.mackenzie.br/fileadmin/ARQUIVOS/Public/1-mackenzie/universidade/controle-academico/2021/Documentos/CONSU_001_2021_-_Regulamento_Acad%C3%AAmico_dos_Cursos_de_Gradua%C3%A7%C3%A3o_Republ_Assinada.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--red-dark);font-weight:700;">Regulamento Acadêmico dos Cursos de Graduação</a></li>
+        <li><a href="https://www.mackenzie.br/graduacao/sao-paulo-higienopolis/engenharia-de-producao/corpo-docente" target="_blank" rel="noopener noreferrer" style="color:var(--red-dark);font-weight:700;">Corpo docente de Engenharia de Produção</a></li>
+      </ul>
+    </div>
+
     <div class="alert alert-red">
       ⚠️ <strong>Atenção:</strong> A reprovação por falta (abaixo de <strong>75% de frequência</strong>) em qualquer componente obrigatória implica em reprovação direta, sem direito a substituição ou exame final.
     </div>
@@ -559,8 +570,8 @@
     <div class="page-title">
       <div class="icon">📚</div>
       <div>
-        <h2>Matriz Curricular 2021</h2>
-        <p>Todas as disciplinas por etapa — Engenharia de Produção (v2019.1)</p>
+        <h2>Matriz Curricular</h2>
+        <p>Todas as disciplinas por etapa</p>
       </div>
     </div>
 
@@ -693,8 +704,12 @@
       <div class="icon">💼</div>
       <div>
         <h2>Estágio Supervisionado</h2>
-        <p>240 horas obrigatórias — 2026/1</p>
+        <p>240 horas obrigatórias — 2026/2</p>
       </div>
+    </div>
+
+    <div class="alert">
+      📌 <strong>Informação importante:</strong> as informações completas e atualizadas sobre o Estágio Supervisionado estão disponíveis no <strong>Moodle</strong>. Consulte o ambiente da disciplina antes de organizar documentos, prazos e entregas.
     </div>
 
     <div class="stats-row">
@@ -780,7 +795,7 @@
             <tr><td>Amanda Laurindo → Enzo Canepa Tosi</td><td>Antonio Augusto dos Santos Soares</td><td>antonio.soares@mackenzie.br</td></tr>
             <tr><td>Fabio Luis Nakabara → Ian Aiach Acho</td><td>João Ferreira Netto</td><td>1001000671@mackenzie.br</td></tr>
             <tr><td>Isabela Benichio → Leonardo Teixeira Silva de Barros</td><td>Marcelo Carvalhal</td><td>marcelo.carvalhal1@mackenzie.br</td></tr>
-            <tr><td>Leopoldo Pelloso → Matheus Martinelli de Gouvea</td><td>Mario Sérgio Santos</td><td>mario.santos@mackenzie.br</td></tr>
+            <tr><td>Leopoldo Pelloso → Matheus Martinelli de Gouvea</td><td>Prof. Dr. Mario Sérgio Santos</td><td>mario.santos@mackenzie.br</td></tr>
             <tr><td>Matheus Servija → Pedro Romagnani Caramanica</td><td>Renata Pelissari</td><td>1170785@mackenzie.br</td></tr>
             <tr><td>Pedro Silva → Vinicius de Oliveira Bertolotti Braga</td><td>Roxana Maria Martinez Orrego</td><td>roxana.orrego@mackenzie.br</td></tr>
           </tbody>
@@ -861,6 +876,61 @@
     </div>
   </div>
 
+  <!-- ===================== EXTENSÃO ===================== -->
+  <div id="tab-extensao" class="panel">
+    <div class="page-title">
+      <div class="icon">🌱</div>
+      <div>
+        <h2>Extensão</h2>
+        <p>Atividades extensionistas integradas à formação em Engenharia de Produção</p>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-badge"><span class="num">10%</span><span class="label">Carga extensionista mínima</span></div>
+      <div class="stat-badge"><span class="num">MEC</span><span class="label">Diretrizes nacionais</span></div>
+      <div class="stat-badge"><span class="num">Curso</span><span class="label">Disciplinas e projetos</span></div>
+    </div>
+
+    <div class="alert">
+      📌 <strong>Resumo:</strong> a extensão universitária aproxima a universidade da sociedade. É o momento em que o aluno aplica conhecimentos do curso em ações, projetos e atividades que dialogam com demandas reais da comunidade, de organizações e do território em que a universidade está inserida.
+    </div>
+
+    <div class="card">
+      <h3>📖 O que é extensão?</h3>
+      <p>A extensão é uma dimensão da formação universitária que une aprendizagem acadêmica, responsabilidade social e prática profissional. Na Engenharia de Produção, ela pode aparecer em projetos, desafios, ações orientadas, atividades com empresas, comunidades, instituições parceiras ou problemas reais que pedem análise, planejamento, melhoria de processos, sustentabilidade, inovação e gestão.</p>
+    </div>
+
+    <div class="card">
+      <h3>📌 Obrigatoriedade da carga extensionista</h3>
+      <p>Conforme as diretrizes nacionais do MEC para a extensão na educação superior, o estudante deve cumprir <strong>10% da carga horária total do curso</strong> em atividades extensionistas. No curso de Engenharia de Produção, essas atividades estão distribuídas em algumas disciplinas e projetos, de acordo com a organização curricular e as orientações acadêmicas vigentes.</p>
+      <p style="margin-top:8px;font-size:12.5px;color:var(--gray-600);">Base nacional: <a href="https://www.gov.br/mec/pt-br/cne/resolucoes/resolucoes-cne-ces-2018" target="_blank" rel="noopener noreferrer" style="color:var(--red);font-weight:700;">Resolução CNE/CES nº 7/2018 — Diretrizes para a Extensão na Educação Superior Brasileira</a>.</p>
+    </div>
+
+    <div class="card">
+      <h3>🧭 Como o aluno deve acompanhar</h3>
+      <ul>
+        <li>Verifique, a cada semestre, quais disciplinas e projetos possuem carga extensionista vinculada.</li>
+        <li>Acompanhe as orientações da coordenação do curso, dos professores responsáveis e da coordenação de extensão.</li>
+        <li>Guarde comprovantes, entregas, certificados ou registros solicitados nas atividades.</li>
+        <li>Em caso de dúvida, procure a coordenação antes de deixar a situação para o final do curso.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📬 Contatos para orientação</h3>
+      <p>Para saber mais sobre as atividades extensionistas, procure a coordenação do curso e a coordenação de extensão da Escola de Engenharia:</p>
+      <ul style="margin-top:8px;">
+        <li><strong>Coordenação do curso:</strong> <a href="mailto:marcelo.fonseca@mackenzie.br" style="color:var(--red);">marcelo.fonseca@mackenzie.br</a></li>
+        <li><strong>Coordenação/Setor de Extensão da Escola de Engenharia:</strong> <a href="mailto:ee.extensao@mackenzie.br" style="color:var(--red);">ee.extensao@mackenzie.br</a></li>
+      </ul>
+    </div>
+
+    <div class="alert alert-green">
+      ✅ A extensão não é apenas uma exigência curricular: é uma ponte entre o conhecimento produzido na sala de aula e os problemas vivos da sociedade. Quando bem aproveitada, vira experiência, repertório e maturidade profissional.
+    </div>
+  </div>
+
   <!-- ===================== ABONO DE FALTA ===================== -->
   <div id="tab-abono" class="panel">
     <div class="page-title">
@@ -875,6 +945,13 @@
       ⚠️ <strong>Atenção:</strong> o abono de faltas é admitido <strong>exclusivamente</strong> nas situações previstas na legislação federal vigente e no Regulamento Acadêmico da UPM. Atestado médico comum, viagem, compromisso profissional ou ausência eventual não entram automaticamente como abono.
     </div>
 
+    
+
+    <div class="card">
+      <h3>🔗 Base normativa</h3>
+      <p>Consulte o <a href="https://www.mackenzie.br/fileadmin/ARQUIVOS/Public/1-mackenzie/universidade/controle-academico/2021/Documentos/CONSU_001_2021_-_Regulamento_Acad%C3%AAmico_dos_Cursos_de_Gradua%C3%A7%C3%A3o_Republ_Assinada.pdf" target="_blank" style="color:var(--red);font-weight:700;">Regulamento Acadêmico dos Cursos de Graduação</a>: o <strong>abono de faltas</strong> está na <strong>Seção VIII, página 16 do regulamento</strong> (página 17 do PDF). A orientação sobre <strong>Regime Especial de Frequência por motivo de saúde</strong> aparece na <strong>Seção II, página 13 do regulamento</strong> (página 14 do PDF).</p>
+    </div>
+
     <div class="card">
       <h3>✅ Quando o abono pode ser aplicado</h3>
       <p>Segundo o Regulamento Acadêmico dos Cursos de Graduação da UPM, o abono de faltas pode ser admitido somente mediante comprovação documentada, quando o discente preencher uma das condições abaixo:</p>
@@ -886,7 +963,7 @@
 
     <div class="card">
       <h3>🏥 Atestado médico e faltas por saúde</h3>
-      <p>Ausências por doença ou traumatismo, quando houver impedimento mais prolongado, devem ser analisadas como <strong>Regime Especial de Frequência</strong>, e não como abono comum de falta. Nesses casos, veja a aba <strong>Regime Especial</strong>.</p>
+      <p>Ausências por doença ou traumatismo, quando houver impedimento mais prolongado, devem ser analisadas como <strong>Regime Especial de Frequência</strong>, e não como abono comum de falta. Esse requerimento se aplica aos casos de afastamento por, no mínimo, <strong>5 dias úteis</strong>. Nesses casos, veja a aba <strong>Regime Especial</strong>.</p>
     </div>
 
     <div class="card">
@@ -911,6 +988,11 @@
         <h2>Regime Especial de Frequência</h2>
         <p>Atendimento excepcional em situações previstas no Regulamento Acadêmico</p>
       </div>
+    </div>
+
+    <div class="card">
+      <h3>🔗 Base normativa</h3>
+      <p>Consulte o <a href="https://www.mackenzie.br/fileadmin/ARQUIVOS/Public/1-mackenzie/universidade/controle-academico/2021/Documentos/CONSU_001_2021_-_Regulamento_Acad%C3%AAmico_dos_Cursos_de_Gradua%C3%A7%C3%A3o_Republ_Assinada.pdf" target="_blank" style="color:var(--red);font-weight:700;">Regulamento Acadêmico dos Cursos de Graduação</a>: o <strong>Regime Especial de Frequência</strong> está nas <strong>Seções II a VII, páginas 13 a 16 do regulamento</strong> (páginas 14 a 17 do PDF).</p>
     </div>
 
     <div class="card">
@@ -976,6 +1058,11 @@
     </div>
 
     <div class="card">
+      <h3>🔗 Base normativa</h3>
+      <p>Consulte o <a href="https://www.mackenzie.br/fileadmin/ARQUIVOS/Public/1-mackenzie/universidade/controle-academico/2021/Documentos/CONSU_001_2021_-_Regulamento_Acad%C3%AAmico_dos_Cursos_de_Gradua%C3%A7%C3%A3o_Republ_Assinada.pdf" target="_blank" style="color:var(--red);font-weight:700;">Regulamento Acadêmico dos Cursos de Graduação</a>: o <strong>Aproveitamento de Estudos</strong> está no <strong>Capítulo IV, páginas 11 e 12 do regulamento</strong> (páginas 12 e 13 do PDF).</p>
+    </div>
+
+    <div class="card">
       <h3>📖 O que é</h3>
       <p>O aproveitamento de estudos permite que componentes curriculares já cursados e aprovados sejam analisados para possível dispensa de disciplinas da matriz curricular da UPM. O pedido não é automático: depende de documentação, equivalência de conteúdo e compatibilidade de carga horária.</p>
     </div>
@@ -1029,42 +1116,34 @@
       <div class="icon">🔬</div>
       <div>
         <h2>Projetos Integradores</h2>
-        <p>PI I ao PI VIII — componentes transversais da matriz curricular</p>
+        <p>Componentes transversais da matriz curricular — mínimo de 4 ao longo do curso</p>
       </div>
     </div>
 
     <div class="card">
       <h3>📖 O que são os Projetos Integradores?</h3>
-      <p>Os Projetos Integradores são componentes curriculares presentes nas etapas 1 a 8 do curso. O aluno deve realizar o <strong>mínimo de 4 Projetos Integradores</strong> para a integralização curricular. Têm como objetivo integrar os conhecimentos das diferentes disciplinas de cada semestre em torno de um projeto prático, desenvolvido em equipe ao longo do período. Aparecem com <strong>carga horária 0 créditos</strong> na grade, pois são avaliados pela participação e entrega, não por horas-aula convencionais.
+      <p>Os Projetos Integradores são componentes curriculares práticos e transversais. O estudante deve realizar o <strong>mínimo de 4 Projetos Integradores</strong> para a integralização curricular. Podem ser realizados em diferentes momentos do curso, conforme a oferta, a orientação acadêmica e o planejamento da coordenação. Têm como objetivo integrar conhecimentos de diferentes disciplinas em torno de um projeto aplicado, desenvolvido em equipe ao longo do período. Aparecem com <strong>carga horária 0 créditos</strong> na grade, pois são avaliados pela participação e entrega, não por horas-aula convencionais.</p>
     </div>
 
     <div class="card">
-      <h3>📅 PI por etapa</h3>
-      <div class="table-wrap" style="margin-top:8px;">
-        <table>
-          <thead><tr><th>PI</th><th>Etapa</th><th>Código</th></tr></thead>
-          <tbody>
-            <tr><td>Projeto Integrador I</td><td>1º semestre</td><td>ENEC 50838</td></tr>
-            <tr><td>Projeto Integrador II</td><td>2º semestre</td><td>ENEC 50839</td></tr>
-            <tr><td>Projeto Integrador III</td><td>3º semestre</td><td>ENEC 50840</td></tr>
-            <tr><td>Projeto Integrador IV</td><td>4º semestre</td><td>ENEC 50841</td></tr>
-            <tr><td>Projeto Integrador V</td><td>5º semestre</td><td>ENEC 50842</td></tr>
-            <tr><td>Projeto Integrador VI</td><td>6º semestre</td><td>ENEC 50927</td></tr>
-            <tr><td>Projeto Integrador VII</td><td>7º semestre</td><td>ENEC 50928</td></tr>
-            <tr><td>Projeto Integrador VIII</td><td>8º semestre</td><td>ENEC 50929</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <h3>📅 Projetos Integradores disponíveis na matriz</h3>
+      <p>Embora a matriz identifique os Projetos Integradores de I a VIII, o cumprimento pode ocorrer ao longo do curso, de acordo com a disponibilidade de oferta e com as orientações acadêmicas vigentes.</p>
+    </div>
+
+    <div class="card">
+      <h3>🔗 Página oficial dos Projetos Integradores</h3>
+      <p>Para consultar informações, orientações e projetos disponíveis, acesse a página oficial dos Projetos Integradores da Escola de Engenharia:</p>
+      <p><a href="https://www.mackenzie.br/universidade/unidades-academicas/ee/atividades-complementares/projetos-integradores" target="_blank" rel="noopener noreferrer" style="color:var(--red-dark);font-weight:700;">Acessar Projetos Integradores – Mackenzie</a></p>
     </div>
 
     <div class="card">
       <h3>⚙️ Como funcionam</h3>
       <ul>
-        <li>Cada PI é vinculado ao tema central do semestre, integrando as disciplinas daquele período.</li>
+        <li>Cada PI é organizado em torno de um tema ou desafio aplicado, buscando integrar teoria, prática e trabalho em equipe.</li>
         <li>São desenvolvidos em <strong>grupos</strong>, com orientação de professores designados.</li>
-        <li>A avaliação é feita por <strong>apresentação e entrega de relatório</strong> ao final do semestre.</li>
-        <li>A reprovação em um PI pode impactar o avanço na matriz curricular.</li>
-        <li>Os PIs envolvem visitas técnicas, estudos de caso, protótipos e outras atividades práticas conforme a etapa.</li>
+        <li>A avaliação é feita por <strong>participação, apresentação e entrega de relatório</strong> ao final do semestre.</li>
+        <li>O estudante deve acompanhar sua situação acadêmica para garantir que o mínimo de <strong>4 PIs</strong> seja concluído antes da formatura.</li>
+        <li>Os PIs podem envolver visitas técnicas, estudos de caso, protótipos, análise de dados e outras atividades práticas, conforme o projeto proposto.</li>
       </ul>
     </div>
 
@@ -1079,19 +1158,35 @@
       <div class="icon">📝</div>
       <div>
         <h2>Trabalho de Conclusão de Curso (TCC)</h2>
-        <p>TCC I (9º semestre) e TCC II (10º semestre) — 108 horas obrigatórias</p>
+        <p>Metodologia (8º semestre), TCC I (9º semestre) e TCC II (10º semestre)</p>
       </div>
+    </div>
+
+    <div class="alert">
+      📌 <strong>Informação importante:</strong> as informações detalhadas sobre o TCC, incluindo orientações, formulários, prazos e procedimentos de entrega, são encontradas no <strong>Moodle</strong>.
     </div>
 
     <div class="stats-row">
       <div class="stat-badge"><span class="num">108h</span><span class="label">Carga total (TCC I + II)</span></div>
+      <div class="stat-badge"><span class="num">8º</span><span class="label">Semestre — Metodologia</span></div>
       <div class="stat-badge"><span class="num">9º</span><span class="label">Semestre — TCC I</span></div>
       <div class="stat-badge"><span class="num">10º</span><span class="label">Semestre — TCC II</span></div>
     </div>
 
     <div class="card">
       <h3>📖 O que é o TCC</h3>
-      <p>O Trabalho de Conclusão de Curso é um trabalho acadêmico individual (ou em grupo, conforme orientação do curso) que demonstra a capacidade do aluno de aplicar os conhecimentos adquiridos ao longo do curso em um problema real ou temático da Engenharia de Produção. É composto por duas etapas semestrais consecutivas: TCC I e TCC II.</p>
+      <p>O Trabalho de Conclusão de Curso é um trabalho acadêmico individual (ou em grupo, conforme orientação do curso) que demonstra a capacidade do aluno de aplicar os conhecimentos adquiridos ao longo do curso em um problema real ou temático da Engenharia de Produção. A preparação começa no 8º semestre, com a disciplina de Metodologia, e segue em duas etapas semestrais consecutivas: TCC I e TCC II.</p>
+    </div>
+
+    <div class="card">
+      <h3>📚 8º semestre — Disciplina de Metodologia</h3>
+      <p>Além de aprender as melhores práticas de pesquisa acadêmica, é nessa etapa que o aluno deve buscar o primeiro contato com seu possível orientador. Esse diálogo inicial é importante para amadurecer o tema, alinhar expectativas e preparar o caminho para o TCC I do 9º semestre.</p>
+      <ul>
+        <li>Compreensão das etapas de uma pesquisa acadêmica aplicada à Engenharia de Produção.</li>
+        <li>Primeira aproximação com temas, problemas de pesquisa, objetivos e métodos.</li>
+        <li>Contato inicial com o orientador para discutir a viabilidade e o recorte do tema.</li>
+        <li>Preparação para iniciar o TCC I com mais clareza, segurança e foco.</li>
+      </ul>
     </div>
 
     <div class="card">
@@ -1144,7 +1239,16 @@
     </div>
 
     <div class="alert alert-green">
-      🌍 A Engenharia de Produção conta com oportunidades de <strong>dupla titulação</strong>, ampliando a formação acadêmica e a experiência internacional dos estudantes.
+      🌍 A Engenharia de Produção conta com oportunidades de <strong>dupla titulação</strong> e de <strong>intercâmbio acadêmico</strong>, ampliando a formação acadêmica e a experiência internacional dos estudantes.
+    </div>
+
+    <div class="card">
+      <h3>🌐 Intercâmbio e mobilidade acadêmica</h3>
+      <p>Além das possibilidades de dupla titulação, o estudante de Engenharia de Produção pode buscar oportunidades de <strong>intercâmbio para universidades parceiras em diversos países</strong>, conforme os editais de mobilidade acadêmica da Universidade.</p>
+      <p style="margin-top:10px;">As vagas, destinos, critérios de seleção, prazos, documentos exigidos e eventuais custos variam de acordo com cada edital. Por isso, é importante acompanhar as chamadas oficiais da Coordenadoria de Cooperação Internacional.</p>
+      <p style="margin-top:12px;">
+        <a href="https://www.mackenzie.br/universidade/coi/estudar-no-exterior/mobilidade-academica/graduacao/pg" target="_blank" rel="noopener" style="display:inline-block;background:var(--red);color:white;text-decoration:none;padding:9px 14px;border-radius:6px;font-size:12.5px;font-weight:700;">Acessar edital de mobilidade acadêmica</a>
+      </p>
     </div>
 
     <div class="card">
@@ -1177,14 +1281,101 @@
       <h3>🧭 Como se preparar</h3>
       <div class="steps">
         <div class="step"><div class="step-num"></div><div class="step-body"><strong>Planeje cedo</strong><p>Converse com a Coordenação para entender em qual etapa do curso a mobilidade pode fazer mais sentido.</p></div></div>
-        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Acompanhe editais e requisitos</strong><p>Verifique desempenho acadêmico, documentação, prazos, proficiência em idioma e regras específicas de cada convênio.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><strong>Acompanhe editais e requisitos</strong><p>Verifique desempenho acadêmico, documentação, prazos, proficiência em idioma, destinos disponíveis, regras de dupla titulação e oportunidades de intercâmbio em universidades parceiras.</p></div></div>
         <div class="step"><div class="step-num"></div><div class="step-body"><strong>Organize a vida acadêmica</strong><p>Confira equivalências, pré-requisitos, disciplinas pendentes, estágio, atividades complementares e possíveis impactos na integralização curricular.</p></div></div>
         <div class="step"><div class="step-num"></div><div class="step-body"><strong>Prepare documentação e idioma</strong><p>Histórico escolar, passaporte, comprovações de proficiência e documentos financeiros podem ser solicitados conforme o programa.</p></div></div>
       </div>
     </div>
 
     <div class="alert">
-      📌 As condições de participação, vagas, prazos, custos, idioma exigido e critérios de seleção podem variar por edital e por instituição parceira. Antes de tomar decisão, confirme as regras vigentes com a Coordenação do curso e com a área de Internacionalização da Universidade.
+      📌 As condições de participação, vagas, prazos, países disponíveis, custos, idioma exigido e critérios de seleção podem variar por edital e por instituição parceira. Antes de tomar decisão, confirme as regras vigentes com a Coordenação do curso e com a área de Internacionalização da Universidade.
+    </div>
+  </div>
+
+
+  <!-- ===================== CONTATOS ===================== -->
+  <div id="tab-contatos" class="panel">
+    <div class="page-title">
+      <div class="icon">📬</div>
+      <div>
+        <h2>Contatos</h2>
+        <p>E-mails importantes do curso de Engenharia de Produção — Campus Higienópolis</p>
+      </div>
+    </div>
+
+    <div class="alert">
+      📌 Use esta aba como um guia rápido de contatos. Para assuntos específicos, procure primeiro o setor responsável. Quando houver dúvida sobre o encaminhamento, consulte a Coordenação do curso.
+    </div>
+
+    <div class="card">
+      <h3>🏫 Coordenação e setores acadêmicos</h3>
+      <div class="table-wrap" style="margin-top:10px;">
+        <table>
+          <thead>
+            <tr><th>Área</th><th>Contato</th><th>Quando procurar</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Coordenação de Engenharia de Produção</strong></td><td><a href="mailto:marcelo.fonseca@mackenzie.br" style="color:var(--red);">marcelo.fonseca@mackenzie.br</a></td><td>Dúvidas gerais do curso, orientação acadêmica, encaminhamentos e casos não resolvidos nos setores específicos.</td></tr>
+            <tr><td><strong>Escola de Engenharia</strong></td><td><a href="mailto:ee@mackenzie.br" style="color:var(--red);">ee@mackenzie.br</a></td><td>Informações gerais da Escola de Engenharia.</td></tr>
+            <tr><td><strong>TCC</strong></td><td><a href="mailto:ee.tcc@mackenzie.br" style="color:var(--red);">ee.tcc@mackenzie.br</a></td><td>Dúvidas sobre TCC I, TCC II, prazos, documentos e procedimentos.</td></tr>
+            <tr><td><strong>Estágio</strong></td><td><a href="mailto:ee.estagio@mackenzie.br" style="color:var(--red);">ee.estagio@mackenzie.br</a></td><td>Informações sobre estágio supervisionado, documentação e validação.</td></tr>
+            <tr><td><strong>Extensão e Atividades Complementares</strong></td><td><a href="mailto:ee.extensao@mackenzie.br" style="color:var(--red);">ee.extensao@mackenzie.br</a></td><td>Dúvidas sobre atividades extensionistas e atividades complementares.</td></tr>
+            <tr><td><strong>PROATO Engenharia</strong></td><td><a href="mailto:ee.proato@mackenzie.br" style="color:var(--red);">ee.proato@mackenzie.br</a></td><td>Apoio, orientação discente e acompanhamento acadêmico.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>👩‍🏫 Corpo docente — Engenharia de Produção Higienópolis</h3>
+      <p>Os e-mails abaixo foram organizados a partir da página oficial de corpo docente da Engenharia de Produção. Para consultar a página original, acesse: <a href="https://www.mackenzie.br/graduacao/sao-paulo-higienopolis/engenharia-de-producao/corpo-docente" target="_blank" rel="noopener noreferrer" style="color:var(--red);font-weight:700;">Corpo Docente — Mackenzie</a>.</p>
+      <div class="table-wrap" style="margin-top:12px;">
+        <table>
+          <thead>
+            <tr><th>Docente</th><th>E-mail</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Prof. Dr. Agostinho Celso Pascalicchio</td><td><a href="mailto:agostinhocelso.pascalichio@mackenzie.br" style="color:var(--red);">agostinhocelso.pascalichio@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Alaercio Nicoletti Junior</td><td><a href="mailto:alaercio.nicoletti@mackenzie.br" style="color:var(--red);">alaercio.nicoletti@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. André Luís Helleno</td><td><a href="mailto:andre.helleno@mackenzie.br" style="color:var(--red);">andre.helleno@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Antonio Augusto dos Santos Soares</td><td><a href="mailto:antonio.soares@mackenzie.br" style="color:var(--red);">antonio.soares@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Benedito Guimarães Aguiar Neto</td><td><a href="mailto:benedito.aguiar@mackenzie.br" style="color:var(--red);">benedito.aguiar@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Bruno Ribeiro</td><td><a href="mailto:bruno.ribeiro@mackenzie.br" style="color:var(--red);">bruno.ribeiro@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Carlos Roberto Camello Lima</td><td><a href="mailto:carlos.lima@mackenzie.br" style="color:var(--red);">carlos.lima@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Guilherme Dean Pelegrina</td><td><a href="mailto:guilherme.pelegrina@mackenzie.br" style="color:var(--red);">guilherme.pelegrina@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Gustavo Rocha da Silva</td><td><a href="mailto:gustavorocha.silva@mackenzie.br" style="color:var(--red);">gustavorocha.silva@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. João Ferreira Netto</td><td><a href="mailto:joao.netto@mackenzie.br" style="color:var(--red);">joao.netto@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Ms. José Tadeu Coutinho</td><td><a href="mailto:josetadeu.coutinho@mackenzie.br" style="color:var(--red);">josetadeu.coutinho@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Ms. Marcelo de Almeida Carvalhal</td><td><a href="mailto:marcelo.carvalhal1@mackenzie.br" style="color:var(--red);">marcelo.carvalhal1@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Marcelo Nunes Fonseca</td><td><a href="mailto:marcelo.fonseca@mackenzie.br" style="color:var(--red);">marcelo.fonseca@mackenzie.br</a></td></tr>
+            <tr><td>Profª Drª Maria Celia de Oliveira</td><td><a href="mailto:mariacelia.oliveira@mackenzie.br" style="color:var(--red);">mariacelia.oliveira@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Mario Sergio Correa dos Santos</td><td><a href="mailto:mario.santos@mackenzie.br" style="color:var(--red);">mario.santos@mackenzie.br</a></td></tr>
+            <tr><td>Profª Drª Míriam Tvrzská de Gouvêa</td><td><a href="mailto:miriam.gouvea@mackenzie.br" style="color:var(--red);">miriam.gouvea@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Nelson Carvalho Maestrelli</td><td><a href="mailto:nelson.maestrelli@mackenzie.br" style="color:var(--red);">nelson.maestrelli@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Orlando Yesid Esparza Albarracin</td><td><a href="mailto:orlando.albarracin@mackenzie.br" style="color:var(--red);">orlando.albarracin@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Paulo Sergio Altman Ferreira</td><td><a href="mailto:paulosergio.ferreira@mackenzie.br" style="color:var(--red);">paulosergio.ferreira@mackenzie.br</a></td></tr>
+            <tr><td>Profª Ms. Raquel Cymrot</td><td><a href="mailto:raquel.cymrot@mackenzie.br" style="color:var(--red);">raquel.cymrot@mackenzie.br</a></td></tr>
+            <tr><td>Profª Drª Rafaela Costa Martins de Mello Dourado</td><td><a href="mailto:rafaela.dourado@mackenzie.br" style="color:var(--red);">rafaela.dourado@mackenzie.br</a></td></tr>
+            <tr><td>Profª Drª Renata Correa Nieto</td><td><a href="mailto:renata.nieto@mackenzie.br" style="color:var(--red);">renata.nieto@mackenzie.br</a></td></tr>
+            <tr><td>Profª Drª Renata Pelissari Infante</td><td><a href="mailto:renata.infante@mackenzie.br" style="color:var(--red);">renata.infante@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Rodrigo Martins Baptista</td><td><a href="mailto:rodrigo.baptista@mackenzie.br" style="color:var(--red);">rodrigo.baptista@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Rodrigo Pereira Vieira</td><td><a href="mailto:rodrigo.vieira@mackenzie.br" style="color:var(--red);">rodrigo.vieira@mackenzie.br</a></td></tr>
+            <tr><td>Profª Drª Roxana Maria Martinez Orrego</td><td><a href="mailto:roxana.orrego@mackenzie.br" style="color:var(--red);">roxana.orrego@mackenzie.br</a></td></tr>
+            <tr><td>Profª Drª Silmara Alexandra da Silva Vicente</td><td><a href="mailto:silmaraalexandra.vicente@mackenzie.br" style="color:var(--red);">silmaraalexandra.vicente@mackenzie.br</a></td></tr>
+            <tr><td>Prof. Dr. Ubirajara Carnevale de Moraes</td><td><a href="mailto:ubirajara.moraes@mackenzie.br" style="color:var(--red);">ubirajara.moraes@mackenzie.br</a></td></tr>
+            <tr><td>Profª Drª Veridiana Rotondaro Pereira</td><td><a href="mailto:veridiana.pereira@mackenzie.br" style="color:var(--red);">veridiana.pereira@mackenzie.br</a></td></tr>
+            <tr><td>Profª Drª Virgínia do Socorro Motta Aguiar</td><td><a href="mailto:virginia.aguiar@mackenzie.br" style="color:var(--red);">virginia.aguiar@mackenzie.br</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🔗 Outros canais úteis</h3>
+      <ul>
+        <li><strong>Mackenzie Carreiras:</strong> <a href="https://carreiras.mackenzie.br/" target="_blank" rel="noopener noreferrer" style="color:var(--red);">carreiras.mackenzie.br</a></li>
+        <li><strong>Corpo Docente oficial:</strong> <a href="https://www.mackenzie.br/graduacao/sao-paulo-higienopolis/engenharia-de-producao/corpo-docente" target="_blank" rel="noopener noreferrer" style="color:var(--red);">Página oficial do curso</a></li>
+      </ul>
     </div>
   </div>
 
