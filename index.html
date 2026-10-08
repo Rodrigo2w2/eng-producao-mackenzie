@@ -7,23 +7,23 @@
 <title>Engenharia de Produção – Mackenzie</title>
 <style>
   :root {
-    --red: #CC0000;
-    --red-dark: #990000;
-    --red-light: #FF1A1A;
+    --red: #EA002A;
+    --red-dark: #231F20;
+    --red-light: #EA002A;
     --white: #FFFFFF;
     --off-white: #F8F8F8;
     --gray-100: #F2F2F2;
     --gray-200: #E5E5E5;
     --gray-400: #AAAAAA;
     --gray-600: #666666;
-    --gray-800: #222222;
-    --accent: #FFD700;
+    --gray-800: #231F20;
+    --accent: #FFFFFF;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: Arial, Helvetica, system-ui, sans-serif;
     background: var(--off-white);
     color: var(--gray-800);
     min-height: 100vh;
@@ -49,17 +49,19 @@
   }
 
   .logo-m {
-    width: 38px;
-    height: 38px;
-    background: white;
-    border-radius: 50%;
+    width: 46px;
+    height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
-    font-size: 20px;
-    color: var(--red);
     flex-shrink: 0;
+  }
+
+  .logo-m img {
+    width: 46px;
+    height: 46px;
+    display: block;
+    object-fit: contain;
   }
 
   .header-text h1 {
@@ -76,7 +78,7 @@
 
   /* NAV TABS */
   nav {
-    background: var(--red-dark);
+    background: #231F20;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -110,7 +112,7 @@
 
   .nav-list li button.active {
     color: white;
-    border-bottom-color: var(--accent);
+    border-bottom-color: var(--red);
     font-weight: 700;
   }
 
@@ -190,13 +192,13 @@
 
   /* ALERT / INFO BOX */
   .alert {
-    background: #FFF8E1;
-    border-left: 4px solid var(--accent);
+    background: #FFF4F6;
+    border-left: 4px solid var(--red);
     border-radius: 6px;
     padding: 12px 16px;
     margin-bottom: 16px;
     font-size: 13px;
-    color: #5a4000;
+    color: var(--gray-800);
   }
 
   .alert-red {
@@ -464,10 +466,10 @@
 <body>
 <header>
 <div class="header-top">
-<div class="logo-m">M</div>
+<div class="logo-m"><img src="data:image/png;base64,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" alt="Símbolo oficial Mackenzie"/></div>
 <div class="header-text">
-<h1>Engenharia de Produção – UPM</h1>
-<p>Universidade Presbiteriana Mackenzie · Campus Higienópolis</p>
+<h1>Engenharia de Produção</h1>
+<p>Universidade Presbiteriana Mackenzie · Escola de Engenharia · Campus Higienópolis</p>
 </div>
 </div>
 <nav>
@@ -523,7 +525,7 @@
 <li>Completar <strong>240 horas de Estágio Supervisionado</strong> aprovadas pelo professor orientador.</li>
 <li>Completar <strong>480 horas de Atividades Complementares</strong> aprovadas pela coordenação.</li>
 <li>Concluir e ser aprovado em <strong>TCC I e TCC II</strong> (108 horas no total).</li>
-<li>Realizar o mínimo de <strong>4 Projetos Integradores</strong> ao longo do curso.</li>
+<li>Realizar o mínimo de <strong>4 Projetos Integradores Extensionistas</strong> ao longo do curso.</li>
 <li>Ter <strong>frequência mínima de 75%</strong> em cada componente curricular (presença obrigatória).</li>
 <li>Atingir médias de aprovação em todas as disciplinas conforme o regimento da UPM.</li>
 <li>Estar em dia com a secretaria acadêmica (documentação, débitos, etc.).</li>
@@ -535,7 +537,7 @@
 <li><strong>Núcleo Básico:</strong> Disciplinas de ciências exatas, humanidades e formação geral (Cálculo, Física, Química, Ética, Empreendedorismo, etc.).</li>
 <li><strong>Núcleo Profissionalizante:</strong> Disciplinas técnicas da área de engenharia que fundamentam a prática profissional.</li>
 <li><strong>Núcleo Específico:</strong> Disciplinas centrais de Engenharia de Produção (Gestão da Qualidade, Logística, Pesquisa Operacional, etc.).</li>
-<li><strong>Projetos Integradores:</strong> Componente prática avaliada por participação e entrega — obrigatório realizar ao menos 4.</li>
+<li><strong>Projetos Integradores:</strong> Componente prática avaliada por participação e entrega — é obrigatório realizar ao menos <strong>4 Projetos Integradores Extensionistas</strong>.</li>
 <li><strong>TCC I e TCC II:</strong> Trabalho de Conclusão de Curso nas etapas 9 e 10.</li>
 <li><strong>Optativas:</strong> Uma disciplina optativa oferecida na 8ª etapa (Business Analytics, Gestão de Conhecimento ou Pesquisa de Mercado).</li>
 </ul>
@@ -677,7 +679,7 @@
 </table>
 </div>
 <div class="alert" style="margin-top:16px;">
-      🔗 <strong>Projetos Integradores:</strong> O aluno deve realizar o mínimo de <strong>4 Projetos Integradores</strong> ao longo do curso. Os Projetos Integradores não constam na grade de disciplinas acima, mas são exigidos para a integralização curricular. Consulte a coordenação para mais informações.
+      🔗 <strong>Projetos Integradores:</strong> O aluno deve realizar o mínimo de <strong>4 Projetos Integradores Extensionistas</strong> ao longo do curso. Os Projetos Integradores não constam na grade de disciplinas acima, mas são exigidos para a integralização curricular. Consulte a coordenação para mais informações.
     </div>
 <div class="alert" style="margin-top:8px;">
       ⭐ <strong>Optativas (8ª etapa):</strong> O aluno deve cursar <strong>uma das três optativas</strong> oferecidas na 8ª etapa: Business Analytics, Gestão de Conhecimento ou Pesquisa de Mercado.
@@ -1089,7 +1091,7 @@
 </div>
 <div class="card">
 <h3>📖 O que são os Projetos Integradores?</h3>
-<p>Os Projetos Integradores são componentes curriculares práticos e transversais. O estudante deve realizar o <strong>mínimo de 4 Projetos Integradores</strong> para a integralização curricular. Podem ser realizados em diferentes momentos do curso, conforme a oferta, a orientação acadêmica e o planejamento da coordenação. Têm como objetivo integrar conhecimentos de diferentes disciplinas em torno de um projeto aplicado, desenvolvido em equipe ao longo do período. Aparecem com <strong>carga horária 0 créditos</strong> na grade, pois são avaliados pela participação e entrega, não por horas-aula convencionais.</p>
+<p>Os Projetos Integradores são componentes curriculares práticos e transversais. O estudante deve realizar o <strong>mínimo de 4 Projetos Integradores Extensionistas</strong> para a integralização curricular. Podem ser realizados em diferentes momentos do curso, conforme a oferta, a orientação acadêmica e o planejamento da coordenação. Têm como objetivo integrar conhecimentos de diferentes disciplinas em torno de um projeto aplicado, desenvolvido em equipe ao longo do período. Aparecem com <strong>carga horária 0 créditos</strong> na grade, pois são avaliados pela participação e entrega, não por horas-aula convencionais.</p>
 </div>
 <div class="card">
 <h3>📅 Projetos Integradores disponíveis na matriz</h3>
